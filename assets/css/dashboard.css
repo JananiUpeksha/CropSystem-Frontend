@@ -1,0 +1,206 @@
+#dashboard {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+}
+
+/* Remove the dashboard-container styles */
+/* Sidebar Styling */
+.sidebar {
+    background-image: url('../img/c6.jpg'); /* Update with your image path */
+    background-size: cover;
+    color: white;
+    width: 20%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+/* Main Dashboard */
+.main-dashboard {
+    width: 80%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 95%; /* Ensure it takes full height */
+}
+
+/* Other styles remain unchanged... */
+
+.sidebar h3, .sidebar p, .nav-menu li {
+    color: rgba(255, 255, 255, 1); /* Bright white text */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Enhanced text shadow for contrast */
+    font-weight: bold; /* Make text bolder */
+}
+
+.nav-menu li {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    color: rgba(255, 255, 255, 1); /* Ensure text color is bright */
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background 0.3s, color 0.3s; /* Transition for color change */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Optional shadow */
+}
+
+.nav-menu li:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
+    color: rgba(255, 255, 255, 1); /* Ensure text is bright on hover */
+}
+
+.nav-menu li i {
+    margin-right: 10px;
+    font-size: 1.2em;
+    filter: brightness(1.5); /* Brightness filter for icons */
+}
+
+.nav-menu li:hover i {
+    filter: brightness(1.8); /* Increase brightness on hover */
+}
+
+
+.sidebar h3, .sidebar p {
+    margin: 5px 0;
+    color: #fff;
+    text-align: center;
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.nav-menu li {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    color: #ffffffb3;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background 0.3s;
+}
+
+.nav-menu li:hover {
+    background-color: #6b9997;
+    color: white;
+}
+
+.nav-menu li i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+/* Logout Button */
+.logout {
+    margin-top: auto;
+    margin-bottom: 30px;
+    padding: 10px 20px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.logout i {
+    margin-right: 8px;
+}
+
+.logout:hover {
+    background-color: #ff5a5a;
+}
+
+/* Main Dashboard */
+.main-dashboard {
+    width: 80%;
+    padding: 20px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Search Bar */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 50px; /* Adjust this value as needed for more or less space */
+}
+
+.search-bar {
+    padding: 10px 20px 10px 40px; /* Space for icon */
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+    width: 300px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    font-size: 1em;
+    color: #888;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+}
+
+.grid-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+#content {
+    background-color: #4caf50; /* Green background color */
+    flex: 1; /* Allow the div to grow and fill remaining space */
+    border-radius: 10px; /* Optional: rounded corners */
+    margin-top: 20px; /* Space above the green div */
+    width: 99%;
+}
+
+

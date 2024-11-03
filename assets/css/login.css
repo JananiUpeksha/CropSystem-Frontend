@@ -1,0 +1,115 @@
+#login {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image:  url('../img/c1.jpg'); /* Update with your image path */
+    background-size: cover; /* Cover the entire div */
+}
+
+.login-container {
+    display: flex;
+    background-color: #d9e2db;
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: 800px;
+    width: 100%;
+    height: 60%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+    padding: 40px;
+    background-color: #ffffff;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form h3 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: -30px; /* Move heading slightly up */
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+.login-form p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.login-form .form-label {
+    font-weight: bold;
+}
+
+.login-form .btn {
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.login-form a {
+    color: #5cb85c;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    margin-top: 10px;
+}
+
+.login-image {
+    position: relative;
+    width: 50%;
+    background-image: url('../img/c1.jpg'); /* Add your image path here */
+    background-size: cover;
+    background-position: center;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.image-overlay h4 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.image-overlay p {
+    font-size: 12px;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+.transparent-input {
+    background-color: rgba(128, 128, 128, 0.3); /* Transparent gray */
+    border: 1px solid rgba(128, 128, 128, 0.5); /* Slightly darker border for contrast */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Primary button background color */
+    border: none; /* Remove border */
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Secondary button background color */
+    border: none; /* Remove border */
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    opacity: 0.8; /* Slightly darker on hover */
+}
