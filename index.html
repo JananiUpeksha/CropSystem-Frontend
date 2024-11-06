@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/login.css">
     <link rel="stylesheet" type="text/css" href="assets/css/signUp.css">
     <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/field.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
    <!-- <link rel="stylesheet" href="style.css">-->
@@ -204,26 +205,27 @@
 </section>-->
 
 <!--------------------------------------------------dashboard------------------------------------------------------------------>
-<!--<section id="dashboard">
-    &lt;!&ndash; Sidebar &ndash;&gt;
+<section id="dashboard">
+    <!-- Sidebar -->
     <div class="sidebar">
         <h3 style="padding-top: 20px;">HARVESTPRO</h3>
-        <p>UX Designer</p>
-
         <div class="nav-menu">
             <ul>
                 <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
-                <li><i class="fas fa-tasks"></i> Tasks</li>
-                <li><i class="fas fa-calendar-alt"></i> Calendar</li>
-                <li><i class="fas fa-comments"></i> Messages</li>
-                <li><i class="fas fa-cog"></i> Settings</li>
+                <li><i class="fas fa-car"></i> Vehicles</li>
+                <li><i class="fas fa-user"></i> Staff</li>
+                <li><i class="fas fa-cogs"></i> Equipment</li>
+                <li><i class="fas fa-tractor"></i> Fields</li>
+                <li><i class="fas fa-seedling"></i> Crops</li>
+                <li><i class="fas fa-book"></i> Logs</li>
             </ul>
         </div>
+
 
         <button class="logout"><i class="fas fa-sign-out-alt"></i> Log out</button>
     </div>
 
-    &lt;!&ndash; Main Dashboard &ndash;&gt;
+    <!-- Main Dashboard -->
     <div class="main-dashboard">
         <header>
             <h1 style="padding-top: 20px;">Dashboard</h1>
@@ -234,7 +236,85 @@
         </header>
         <div id="content"></div>
     </div>
-</section>-->
+</section>
+
+<!--------------------------------------------------field------------------------------------------------------------------>
+<!--------------------------------------------------field------------------------------------------------------------------>
+<section id="fieldField">
+    <!-- Sidebar -->
+    <div class="sidebarField">
+        <h3 style="padding-top: 20px;">HARVESTPRO</h3>
+        <div class="nav-menuField">
+            <ul>
+                <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+                <li><i class="fas fa-car"></i> Vehicles</li>
+                <li><i class="fas fa-user"></i> Staff</li>
+                <li><i class="fas fa-cogs"></i> Equipment</li>
+                <li><i class="fas fa-tractor"></i> Fields</li>
+                <li><i class="fas fa-seedling"></i> Crops</li>
+                <li><i class="fas fa-book"></i> Logs</li>
+            </ul>
+        </div>
+
+        <button class="logoutField"><i class="fas fa-sign-out-alt"></i> Log out</button>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div class="main-dashboardField">
+        <header>
+            <h1 style="padding-top: 20px;">Field Management</h1>
+            <div class="search-containerField" style="padding-top: 20px;">
+                <i class="fas fa-search search-iconField"></i>
+                <input type="text" class="search-barField" placeholder="Search...">
+            </div>
+        </header>
+        <div id="contentFieldField">
+            <table class="field-tableField">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th>Image</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Table rows will go here -->
+                </tbody>
+            </table>
+
+            <!-- Buttons -->
+            <div class="button-containerField">
+                <label for="addModalCheckboxField" class="action-btnField add-btnField">Add</label>
+                <button class="action-btnField delete-btnField">Delete</button>
+                <button class="action-btnField update-btnField">Update</button>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Modal Form - Using Checkbox Hack for Display Control -->
+<input type="checkbox" id="addModalCheckboxField" class="modal-toggleField" hidden>
+<div class="modalField">
+    <div class="modal-contentField">
+        <label for="addModalCheckboxField" class="close-btnField">&times;</label>
+        <h2>Add Field Data</h2>
+        <form>
+            <input type="text" placeholder="Field Name">
+            <input type="text" placeholder="Field Type">
+            <input type="number" placeholder="Size (acres)">
+            <input type="text" placeholder="Soil Type">
+            <input type="text" placeholder="Crop Type">
+            <input type="file" accept="image/*" placeholder="Upload Image 1">
+            <input type="file" accept="image/*" placeholder="Upload Image 2">
+            <input type="text" placeholder="Location">
+            <button type="button">Save</button>
+            <button type="button">Clear</button>
+        </form>
+    </div>
+</div>
+
+
 
 
 

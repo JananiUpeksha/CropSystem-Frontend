@@ -6,8 +6,6 @@
     overflow: hidden;
     display: flex;
 }
-
-/* Remove the dashboard-container styles */
 /* Sidebar Styling */
 .sidebar {
     background-image: url('../img/c6.jpg'); /* Update with your image path */
@@ -148,12 +146,17 @@ h1 {
     color: #333;
 }
 
+.nav-menu {
+    padding-top: 30px; /* Adjust the value as needed */
+}
+
+
 /* Search Bar */
 .search-container {
     position: relative;
     display: flex;
     align-items: center;
-    margin-left: 50px; /* Adjust this value as needed for more or less space */
+    margin-right: 40px; /* Adjust this value as needed for more or less space */
 }
 
 .search-bar {
@@ -171,29 +174,6 @@ h1 {
     font-size: 1em;
     color: #888;
 }
-
-/* Dashboard Content */
-.dashboard-content {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 20px;
-    width: 100%;
-}
-
-.grid-item {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
-}
-
 
 #content {
     background-color: #4caf50; /* Green background color */
