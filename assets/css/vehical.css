@@ -207,19 +207,22 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     align-items: center;
     justify-content: center;
+    transition: opacity 0.3s ease;
 }
 
 .modal-contentVehicle {
     background-image: url('../img/c6.jpg'); /* Update with your image path */
     background-size: cover;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
     width: 400px;
     max-width: 80%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     position: relative;
+    animation: slideIn 0.4s ease;
 }
 
 /* Dark overlay */
@@ -231,7 +234,7 @@ h1 {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black overlay */
-    border-radius: 8px;
+    border-radius: 12px;
     pointer-events: none;
     z-index: 0;
 }
@@ -244,36 +247,62 @@ h1 {
 
 .modal-contentVehicle h2 {
     margin-top: 0;
+    color: #ffffff;
+    font-size: 24px;
+    text-align: center;
 }
 
+/* Form input and button styling */
 .modal-contentVehicle form input,
-.modal-contentVehicle form button {
+.modal-contentVehicle form button,
+.modal-contentVehicle form select,
+.modal-contentVehicle form textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-top: 10px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
+/* Button styling */
 .modal-contentVehicle form button {
-    background-image: url('../img/c6.jpg');
+    background-image: url('../img/c6.jpg'); /* Update with your image path */
     background-size: cover;
-    color: white;
-    cursor: pointer;
+    color: #fff;
     font-size: 16px;
-    position: relative;
-    overflow: hidden;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-contentVehicle form button:hover {
+    background-color: #0056b3;
+}
+
+/* Custom dropdown styling */
+.modal-contentVehicle form select {
+    appearance: none;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.modal-contentVehicle form select:focus {
+    border-color: #5b9bd5;
+    box-shadow: 0 0 5px rgba(91, 155, 213, 0.5);
 }
 
 /* Checkbox Hack for Modal Display */
 .modal-toggleVehicle:checked ~ .modalVehicle {
     display: flex;
+    opacity: 1;
 }
 
 /* Close Button */
@@ -281,44 +310,24 @@ h1 {
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 18px;
-    cursor: pointer;
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.8), rgba(150, 0, 0, 0.9));
+    font-size: 20px;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.9), rgba(150, 0, 0, 0.8));
     color: white;
-    width: 45px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    overflow: hidden;
-    z-index: 2;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .close-btnVehicle:hover {
-    background: linear-gradient(135deg, rgba(255, 50, 50, 1), rgba(200, 0, 0, 1));
     transform: scale(1.1);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 }
 
-.close-btnVehicle::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent);
-    border-radius: 8px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
 
-.close-btnVehicle:hover::before {
-    opacity: 1;
-}
 
-.close-btnVehicle i {
-    position: relative;
-    z-index: 1;
-}

@@ -213,7 +213,7 @@ h1 {
 }
 
 .modal-contentEquipment {
-    background-image: url('../img/c6.jpg'); /* Update with your image path */
+    background-image: url('../img/c6.jpg');
     background-size: cover;
     padding: 20px;
     border-radius: 8px;
@@ -221,7 +221,8 @@ h1 {
     max-width: 80%;
     position: relative;
 }
-/* Dark overlay */
+
+/* Dark overlay for content */
 .modal-contentEquipment::before {
     content: "";
     position: absolute;
@@ -229,13 +230,12 @@ h1 {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black overlay */
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     pointer-events: none;
     z-index: 0;
 }
 
-/* Ensuring content is above overlay */
 .modal-contentEquipment * {
     position: relative;
     z-index: 1;
@@ -243,39 +243,57 @@ h1 {
 
 .modal-contentEquipment h2 {
     margin-top: 0;
+    color: white;
 }
 
+/* Form input and button styling */
 .modal-contentEquipment form input,
-.modal-contentEquipment form button {
+.modal-contentEquipment form button,
+.modal-contentEquipment form .styled-select {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 16px;
 }
 
+/* Button styling */
 .modal-contentEquipment form button {
-    background-image: url('../img/c6.jpg');
+    background-image: url('../img/c6.jpg'); /* Update with your image path */
     background-size: cover;
     color: white;
     cursor: pointer;
     font-size: 16px;
-    position: relative;
-    overflow: hidden;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transition: background-color 0.3s;
     border: none;
+}
+
+/* Button hover effect */
+.modal-contentEquipment form button:hover {
+    background-color: #0056b3;
+}
+
+/* Custom dropdown styling */
+.styled-select {
+    appearance: none;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
 }
 
-/* Checkbox Hack for Modal Display */
-.modal-toggleEquipment:checked ~ .modalEquipment {
-    display: flex;
+/* Dropdown focus effect */
+.styled-select:focus {
+    border-color: #5b9bd5;
+    box-shadow: 0 0 5px rgba(91, 155, 213, 0.5);
 }
 
-/* Close Button */
+/* Close Button Styling */
 .close-btnEquipment {
     position: absolute;
     top: 10px;
@@ -317,7 +335,10 @@ h1 {
     opacity: 1;
 }
 
-.close-btnEquipment i {
-    position: relative;
-    z-index: 1;
+/* Checkbox Hack for Modal Display */
+.modal-toggleEquipment:checked ~ .modalEquipment {
+    display: flex;
 }
+
+
+

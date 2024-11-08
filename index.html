@@ -278,9 +278,10 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Type</th>
+                    <th>Size</th>
                     <th>Location</th>
-                    <th>Image</th>
+                    <th>Image1</th>
+                    <th>Image2</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -305,13 +306,10 @@
         <h2>Add Field Data</h2>
         <form>
             <input type="text" placeholder="Field Name">
-            <input type="text" placeholder="Field Type">
+            <input type="text" placeholder="Location">
             <input type="number" placeholder="Size (acres)">
-            <input type="text" placeholder="Soil Type">
-            <input type="text" placeholder="Crop Type">
             <input type="file" accept="image/*" placeholder="Upload Image 1">
             <input type="file" accept="image/*" placeholder="Upload Image 2">
-            <input type="text" placeholder="Location">
             <button type="button">Save</button>
             <button type="button">Clear</button>
         </form>
@@ -354,8 +352,7 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Type</th>
-                    <th>Location</th>
-                    <th>Image</th>
+                    <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -381,16 +378,17 @@
         <form>
             <input type="text" placeholder="Equipment Name">
             <input type="text" placeholder="Equipment Type">
-            <input type="number" placeholder="Size/Capacity">
-            <input type="text" placeholder="Condition">
-            <input type="text" placeholder="Location">
-            <input type="file" accept="image/*" placeholder="Upload Image 1">
-            <input type="file" accept="image/*" placeholder="Upload Image 2">
+            <!-- Dropdown for Status -->
+            <select class="styled-select" name="status">
+                <option value="available">Available</option>
+                <option value="not_available">Not Available</option>
+            </select>
             <button type="button">Save</button>
             <button type="button">Clear</button>
         </form>
     </div>
 </div>
+
 
 <!--------------------------------------------------vehicles------------------------------------------------------------------>
 <section id="vehicleSection">
@@ -426,10 +424,11 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Location</th>
-                    <th>Image</th>
+                    <th>Plate NO</th>
+                    <th>Category</th>
+                    <th>Fuel Type</th>
+                    <th>Status</th>
+                    <th>Remark</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -446,7 +445,6 @@
         </div>
     </div>
 </section>
-
 <!-- Modal Form - Using Checkbox Hack for Display Control -->
 <input type="checkbox" id="addModalCheckboxVehicle" class="modal-toggleVehicle" hidden>
 <div class="modalVehicle">
@@ -454,18 +452,31 @@
         <label for="addModalCheckboxVehicle" class="close-btnVehicle">&times;</label>
         <h2>Add Vehicle Data</h2>
         <form>
-            <input type="text" placeholder="Vehicle Name">
-            <input type="text" placeholder="Vehicle Type">
-            <input type="number" placeholder="Size/Capacity">
-            <input type="text" placeholder="Condition">
-            <input type="text" placeholder="Location">
+            <input type="text" placeholder="ID" required>
+            <input type="text" placeholder="Plate No" required>
+            <input type="text" placeholder="Category" required>
+            <input type="text" placeholder="Fuel Type" required>
+
+            <!-- Status Dropdown -->
+            <select class="styled-select" name="status" required>
+                <option value="">Select Status</option>
+                <option value="available">Available</option>
+                <option value="not_available">Not Available</option>
+            </select>
+
+            <textarea placeholder="Remark" rows="3"></textarea>
+
+            <!-- Image Upload Fields -->
             <input type="file" accept="image/*" placeholder="Upload Image 1">
             <input type="file" accept="image/*" placeholder="Upload Image 2">
+
             <button type="button">Save</button>
             <button type="button">Clear</button>
         </form>
     </div>
 </div>
+
+
 
 <!--------------------------------------------------crops------------------------------------------------------------------>
 <section id="cropSection">
@@ -501,9 +512,10 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Location</th>
+                    <th>Scientific Name</th>
+                    <th>Common Name</th>
+                    <th>Category</th>
+                    <th>Season</th>
                     <th>Image</th>
                 </tr>
                 </thead>
@@ -529,13 +541,12 @@
         <label for="addModalCheckboxCrop" class="close-btnCrop">&times;</label>
         <h2>Add Crop Data</h2>
         <form>
-            <input type="text" placeholder="Crop Name">
-            <input type="text" placeholder="Crop Type">
-            <input type="number" placeholder="Size/Area">
-            <input type="text" placeholder="Condition">
-            <input type="text" placeholder="Location">
-            <input type="file" accept="image/*" placeholder="Upload Image 1">
-            <input type="file" accept="image/*" placeholder="Upload Image 2">
+            <input type="text" placeholder="Scientific Name">
+            <input type="text" placeholder="Common Name">
+            <input type="number" placeholder="Category">
+            <input type="text" placeholder="Season">
+            <input type="file" accept="image/*" placeholder="Upload Image">
+
             <button type="button">Save</button>
             <button type="button">Clear</button>
         </form>
@@ -575,9 +586,13 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>DOB</th>
                     <th>Role</th>
                     <th>Contact</th>
+                    <th>Address</th>
+                    <th>Email</th>
                     <th>Join Date</th>
                 </tr>
                 </thead>
