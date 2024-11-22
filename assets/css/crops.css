@@ -7,6 +7,14 @@
     overflow: hidden;
     display: flex;
 }
+#cropMainSection {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+}
 
 /* Sidebar Styling */
 .sidebarCrop {
@@ -93,10 +101,10 @@
 /* Main Dashboard */
 .main-dashboardCrop {
     width: 80%;
-    background-color: #ffffff;
+    background-color: plum;
     display: flex;
     flex-direction: column;
-    height: 95%;
+    height: 100%;
     padding: 20px;
 }
 

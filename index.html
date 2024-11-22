@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crop Management System</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css" rel="stylesheet" />
+
     <link rel="stylesheet" type="text/css" href="assets/css/createAccount.css">
     <link rel="stylesheet" type="text/css" href="assets/css/login.css">
     <link rel="stylesheet" type="text/css" href="assets/css/signUp.css">
@@ -24,280 +27,193 @@
 </head>
 <body>
 <!--------------------------------------------------login------------------------------------------------------------------>
-<section id="login">
-    <div class="login-container">
-        <!-- Left Side - Login Form -->
-        <div class="login-form">
-            <h3>Good Morning!</h3>
-            <p>Please enter your email and password to access your account.If you don't have an account then create a new one</p>
-            <form>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email address</label>
-                    <div class="input-group">
-                        <input type="email" class="form-control transparent-input" id="email" placeholder="Enter your email">
+<section id="loginMain">
+    <section id="login">
+        <div class="login-container">
+            <!-- Left Side - Login Form -->
+            <div class="login-form">
+                <h3>Good Morning!</h3>
+                <p>Please enter your email and password to access your account.If you don't have an account then create a new one</p>
+                <form>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <div class="input-group">
+                            <input type="email" class="form-control transparent-input" id="email" placeholder="Enter your email">
+                        </div>
                     </div>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <div class="input-group">
-                        <input type="password" class="form-control transparent-input" id="password" placeholder="Enter your password">
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control transparent-input" id="password" placeholder="Enter your password">
+                        </div>
                     </div>
-                </div>
-                <a href="#">Forgot your password?</a>
-                <button type="button" class="btn btn-primary w-100 mt-3" id="loginBtn">Login</button>
-                <button type="button" class="btn btn-secondary w-100 mt-2" id="CreateAccountBtn">Create Account</button> <!-- New Create Account button -->
-            </form>
-        </div>
+                    <a href="#">Forgot your password?</a>
+                    <button type="button" class="btn btn-primary w-100 mt-3" id="loginBtn">Login</button>
+                    <button type="button" class="btn btn-secondary w-100 mt-2" id="CreateAccountBtn">Create Account</button> <!-- New Create Account button -->
+                </form>
+            </div>
 
-        <!-- Right Side - Image with Overlay -->
-        <div class="login-image">
-            <div class="image-overlay">
-                <h4>Nature Medicine: the new gold standard for cancer treatment</h4>
-                <p>The resulting interactive report includes updated information about approved or investigational treatments for each patient.</p>
+            <!-- Right Side - Image with Overlay -->
+            <div class="login-image">
+                <div class="image-overlay">
+                    <h4>Nature Medicine: the new gold standard for cancer treatment</h4>
+                    <p>The resulting interactive report includes updated information about approved or investigational treatments for each patient.</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </section>
 
 <!--------------------------------------------------signup------------------------------------------------------------------>
-<section id="newAccount">
-    <div class="account-container">
-        <!-- Left Side - Login Form -->
-        <div class="account-form">
-            <h3>Create Account</h3>
-            <p></p>
-            <form>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email address</label>
-                    <div class="input-group">
-                        <input type="email" class="form-control transparent-input" id="email1" placeholder="Enter your email">
+<section id="newAccountMain">
+    <section id="newAccount">
+        <div class="account-container">
+            <!-- Left Side - Login Form -->
+            <div class="account-form">
+                <h3>Create Account</h3>
+                <p></p>
+                <form>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <div class="input-group">
+                            <input type="email" class="form-control transparent-input" id="email1" placeholder="Enter your email">
+                        </div>
                     </div>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <div class="input-group">
-                        <input type="password" class="form-control transparent-input" id="password1" placeholder="Enter your password">
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control transparent-input" id="password1" placeholder="Enter your password">
+                        </div>
                     </div>
-                </div>
-                <div class="mb-3">
-                    <label for="role" class="form-label">Select Role</label>
-                    <div class="input-group">
-                        <select id="role" class="form-select transparent-input">
-                            <option value="" selected disabled>Select your role</option>
-                            <option value="admin">Admin</option>
-                            <option value="staff">Staff</option>
-                            <option value="user">User</option>
-                        </select>
+                    <div class="mb-3">
+                        <label for="role" class="form-label">Select Role</label>
+                        <div class="input-group">
+                            <select id="role" class="form-select transparent-input">
+                                <option value="" selected disabled>Select your role</option>
+                                <option value="admin">Admin</option>
+                                <option value="staff">Staff</option>
+                                <option value="user">User</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <button type="button" class="btn btn-secondary w-100 mt-3" id="CreateAccountBackBtn">Back</button>
-                <button type="button" class="btn btn-secondary w-100 mt-2" id="saveAccountBtn">Create Account</button> <!-- New Create Account button -->
-            </form>
-        </div>
+                    <button type="button" class="btn btn-secondary w-100 mt-3" id="CreateAccountBackBtn">Back</button>
+                    <button type="button" class="btn btn-secondary w-100 mt-2" id="saveAccountBtn">Create Account</button> <!-- New Create Account button -->
+                </form>
+            </div>
 
-        <!-- Right Side - Image with Overlay -->
-        <div class="account-image">
-            <div class="image-overlay">
-                <h4>Nature Medicine: the new gold standard for cancer treatment</h4>
-                <p>The resulting interactive report includes updated information about approved or investigational treatments for each patient.</p>
+            <!-- Right Side - Image with Overlay -->
+            <div class="account-image">
+                <div class="image-overlay">
+                    <h4>Nature Medicine: the new gold standard for cancer treatment</h4>
+                    <p>The resulting interactive report includes updated information about approved or investigational treatments for each patient.</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </section>
 
-<!--<section id="CreateAccount" style="background-color: #f5f5f5;">
-    <div class="signup-background">
-    <div class="signup-container">
-        <h3>Create Account</h3>
-        <form>
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <label for="signupFirstName" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="signupFirstName" placeholder="Enter your first name">
-                </div>
-                <div class="col-md-4">
-                    <label for="signupLastName" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="signupLastName" placeholder="Enter your last name">
-                </div>
-                <div class="col-md-4">
-                    <label for="signupEmail" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" id="signupEmail" placeholder="Enter your email">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <label for="signupPassword" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="signupPassword" placeholder="Enter your password">
-                </div>
-                <div class="col-md-4">
-                    <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="signupConfirmPassword" placeholder="Confirm your password">
-                </div>
-                <div class="col-md-4">
-                    <label for="signupPhone" class="form-label">Phone Number</label>
-                    <input type="tel" class="form-control" id="signupPhone" placeholder="Enter your phone number">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <label for="signupBirthday" class="form-label">Birthday</label>
-                    <input type="date" class="form-control" id="signupBirthday">
-                </div>
-                <div class="col-md-4">
-                    <label for="signupRole" class="form-label">Role</label>
-                    <select class="form-select" id="signupRole">
-                        <option selected disabled>Select your role</option>
-                        <option value="user">User</option>
-                        <option value="admin">Admin</option>
-                        <option value="manager">Manager</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label for="signupAddress" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="signupAddress" placeholder="Enter your address">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <label for="signupCity" class="form-label">City</label>
-                    <input type="text" class="form-control" id="signupCity" placeholder="Enter your city">
-                </div>
-                <div class="col-md-4">
-                    <label for="signupState" class="form-label">State</label>
-                    <input type="text" class="form-control" id="signupState" placeholder="Enter your state">
-                </div>
-                <div class="col-md-4">
-                    <label for="signupZip" class="form-label">Zip Code</label>
-                    <input type="text" class="form-control" id="signupZip" placeholder="Enter your zip code">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <label for="signupCountry" class="form-label">Country</label>
-                    <input type="text" class="form-control" id="signupCountry" placeholder="Enter your country">
-                </div>
-                <div class="col-md-4">
-                    <label for="signupOccupation" class="form-label">Occupation</label>
-                    <input type="text" class="form-control" id="signupOccupation" placeholder="Enter your occupation">
-                </div>
-                <div class="col-md-4">
-                    <label for="signupOrganization" class="form-label">Organization</label>
-                    <input type="text" class="form-control" id="signupOrganization" placeholder="Enter your organization">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <label for="signupRoleInOrg" class="form-label">Role in Organization</label>
-                    <input type="text" class="form-control" id="signupRoleInOrg" placeholder="Enter your role">
-                </div>
-                <div class="col-md-4">
-                    <label for="signupBio" class="form-label">Bio</label>
-                    <textarea class="form-control" id="signupBio" rows="1" placeholder="Tell us about yourself"></textarea>
-                </div>
-                <div class="col-md-4">
-                    <label for="signupExtraInfo" class="form-label">Extra Info</label>
-                    <input type="text" class="form-control" id="signupExtraInfo" placeholder="Any additional info">
-                </div>
-            </div>
-            <div class="text-end mt-4"> &lt;!&ndash; Added mt-4 for top margin &ndash;&gt;
-                <button type="submit" class="btn btn-primary me-2">Submit</button>
-                <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
-            </div>
 
-        </form>
-        </div>
-    </div>
-</section>-->
 
 <!--------------------------------------------------dashboard------------------------------------------------------------------>
-<section id="dashboard">
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h3 style="padding-top: 20px;">HARVESTPRO</h3>
-        <div class="nav-menu">
-            <ul>
-                <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
-                <li><i class="fas fa-car"></i> Vehicles</li>
-                <li><i class="fas fa-users"></i> Staff</li>
-                <li><i class="fas fa-cogs"></i> Equipment</li>
-                <li><i class="fas fa-tractor"></i> Fields</li>
-                <li><i class="fas fa-seedling"></i> Crops</li>
-                <li><i class="fas fa-book"></i> Logs</li>
-            </ul>
+<section id="mainDashboard" class="main-content">
+    <section id="dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h3 style="padding-top: 20px;">HARVESTPRO</h3>
+            <div class="nav-menu">
+                <ul>
+                    <ul id="sidebar1">
+                        <li id="navDashboard1"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+                        <li id="navVehicle1"><i class="fas fa-car"></i> Vehicles</li>
+                        <li id="navStaff1"><i class="fas fa-users"></i> Staff</li>
+                        <li id="navEquipment1"><i class="fas fa-cogs"></i> Equipment</li>
+                        <li id="navField1"><i class="fas fa-tractor"></i> Fields</li>
+                        <li id="navCrops1"><i class="fas fa-seedling"></i> Crops</li>
+                        <li id="navLogs1"><i class="fas fa-book"></i> Logs</li>
+                    </ul>
+                </ul>
+            </div>
+
+            <button class="logout"><i class="fas fa-sign-out-alt"></i> Log out</button>
         </div>
 
 
-        <button class="logout"><i class="fas fa-sign-out-alt"></i> Log out</button>
-    </div>
-
-    <!-- Main Dashboard -->
-    <div class="main-dashboard">
-        <header>
-            <h1 style="padding-top: 20px;">Dashboard</h1>
-            <div class="search-container" style="padding-top: 20px;" >
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-bar" placeholder="Search...">
-            </div>
-        </header>
-        <div id="content"></div>
-    </div>
+        <!-- Main Dashboard -->
+        <div class="main-dashboard" >
+            <header>
+                <h1 style="padding-top: 20px;">Dashboard</h1>
+                <div class="search-container" style="padding-top: 20px;" >
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-bar" placeholder="Search...">
+                </div>
+            </header>
+            <div id="content"></div>
+        </div>
+    </section>
 </section>
 
 <!--------------------------------------------------field------------------------------------------------------------------>
-<section id="fieldField">
-    <!-- Sidebar -->
-    <div class="sidebarField">
-        <h3 style="padding-top: 20px;">HARVESTPRO</h3>
-        <div class="nav-menuField">
-            <ul>
-                <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
-                <li><i class="fas fa-car"></i> Vehicles</li>
-                <li><i class="fas fa-users"></i> Staff</li>
-                <li><i class="fas fa-cogs"></i> Equipment</li>
-                <li><i class="fas fa-tractor"></i> Fields</li>
-                <li><i class="fas fa-seedling"></i> Crops</li>
-                <li><i class="fas fa-book"></i> Logs</li>
-            </ul>
-        </div>
+    <section id="fieldMainSection" class="main-content">
+        <section id="fieldField">
+            <!-- Sidebar -->
+            <div class="sidebarField">
+                <h3 style="padding-top: 20px;">HARVESTPRO</h3>
+                <div class="nav-menuField">
+                    <ul>
+                        <ul>
+                            <ul id="sidebar2">
+                                <li id="navDashboard2"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+                                <li id="navVehicle2"><i class="fas fa-car"></i> Vehicles</li>
+                                <li id="navStaff2"><i class="fas fa-users"></i> Staff</li>
+                                <li id="navEquipment2"><i class="fas fa-cogs"></i> Equipment</li>
+                                <li id="navField2"><i class="fas fa-tractor"></i> Fields</li>
+                                <li id="navCrops2"><i class="fas fa-seedling"></i> Crops</li>
+                                <li id="navLogs2"><i class="fas fa-book"></i> Logs</li>
+                            </ul>
+                        </ul>
+                    </ul>
+                </div>
 
-        <button class="logoutField"><i class="fas fa-sign-out-alt"></i> Log out</button>
-    </div>
 
-    <!-- Main Dashboard -->
-    <div class="main-dashboardField">
-        <header>
-            <h1 style="padding-top: 20px;">Field Management</h1>
-            <div class="search-containerField" style="padding-top: 20px;">
-                <i class="fas fa-search search-iconField"></i>
-                <input type="text" class="search-barField" placeholder="Search...">
+                <button class="logoutField"><i class="fas fa-sign-out-alt"></i> Log out</button>
             </div>
-        </header>
-        <div id="contentFieldField">
-            <table class="field-tableField">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Size</th>
-                    <th>Location</th>
-                    <th>Image1</th>
-                    <th>Image2</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Table rows will go here -->
-                </tbody>
-            </table>
 
-            <!-- Buttons -->
-            <div class="button-containerField">
-                <label for="addModalCheckboxField" class="action-btnField add-btnField">Add</label>
-                <button class="action-btnField delete-btnField">Delete</button>
-                <button class="action-btnField update-btnField">Update</button>
+            <!-- Main Dashboard -->
+            <div class="main-dashboardField">
+                <header>
+                    <h1 style="padding-top: 20px;">Field Management</h1>
+                    <div class="search-containerField" style="padding-top: 20px;">
+                        <i class="fas fa-search search-iconField"></i>
+                        <input type="text" class="search-barField" placeholder="Search...">
+                    </div>
+                </header>
+                <div id="contentFieldField">
+                    <table class="field-tableField">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Size</th>
+                            <th>Location</th>
+                            <th>Image1</th>
+                            <th>Image2</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Table rows will go here -->
+                        </tbody>
+                    </table>
+
+                    <!-- Buttons -->
+                    <div class="button-containerField">
+                        <label for="addModalCheckboxField" class="action-btnField add-btnField">Add</label>
+                        <button class="action-btnField delete-btnField">Delete</button>
+                        <button class="action-btnField update-btnField">Update</button>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+    </section>
 <!-- Modal Form - Using Checkbox Hack for Display Control -->
 <input type="checkbox" id="addModalCheckboxField" class="modal-toggleField" hidden>
 <div class="modalField">
@@ -305,69 +221,107 @@
         <label for="addModalCheckboxField" class="close-btnField">&times;</label>
         <h2>Add Field Data</h2>
         <form>
-            <input type="text" placeholder="Field Name">
-            <input type="text" placeholder="Location">
-            <input type="number" placeholder="Size (acres)">
-            <input type="file" accept="image/*" placeholder="Upload Image 1">
-            <input type="file" accept="image/*" placeholder="Upload Image 2">
+            <input type="text" id="fieldName" placeholder="Field Name">
+            <input type="text" id="location" placeholder="Location">
+            <button type="button" id="searchLocationBtn">Search Location</button>
+
+            <!-- Location map container -->
+            <div class="map-container">
+                <div id="leaflet-map"></div>
+            </div>
+
+            <input type="number" id="fieldSize" placeholder="Size (acres)">
+            <input type="file" id="image1" accept="image/*" placeholder="Upload Image 1">
+            <input type="file" id="image2" accept="image/*" placeholder="Upload Image 2">
+
+            <!-- Hidden fields for storing latitude and longitude -->
+            <input type="hidden" id="latitude">
+            <input type="hidden" id="longitude">
+
+            <!-- Dropdowns for adding staff -->
+            <select id="staff1" name="staff1">
+                <option value="">Select Staff 1</option>
+                <option value="staff1_id">Staff Member 1</option>
+                <option value="staff2_id">Staff Member 2</option>
+                <option value="staff3_id">Staff Member 3</option>
+            </select>
+
+            <select id="staff2" name="staff2">
+                <option value="">Select Staff 2</option>
+                <option value="staff1_id">Staff Member 1</option>
+                <option value="staff2_id">Staff Member 2</option>
+                <option value="staff3_id">Staff Member 3</option>
+            </select>
+
+            <select id="staff3" name="staff3">
+                <option value="">Select Staff 3</option>
+                <option value="staff1_id">Staff Member 1</option>
+                <option value="staff2_id">Staff Member 2</option>
+                <option value="staff3_id">Staff Member 3</option>
+            </select>
+
             <button type="button">Save</button>
             <button type="button">Clear</button>
         </form>
     </div>
 </div>
-
 <!--------------------------------------------------equipment------------------------------------------------------------------>
-<section id="equipmentSection">
-    <!-- Sidebar -->
-    <div class="sidebarEquipment">
-        <h3 style="padding-top: 20px;">HARVESTPRO</h3>
-        <div class="nav-menuEquipment">
-            <ul>
-                <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
-                <li><i class="fas fa-car"></i> Vehicles</li>
-                <li><i class="fas fa-users"></i> Staff</li>
-                <li><i class="fas fa-cogs"></i> Equipment</li>
-                <li><i class="fas fa-tractor"></i> Fields</li>
-                <li><i class="fas fa-seedling"></i> Crops</li>
-                <li><i class="fas fa-book"></i> Logs</li>
-            </ul>
+<section id="equipmentMainSection" class="main-content">
+    <section id="equipmentSection">
+        <!-- Sidebar -->
+        <div class="sidebarEquipment">
+            <h3 style="padding-top: 20px;">HARVESTPRO</h3>
+            <div class="nav-menuEquipment">
+                <ul>
+                    <ul id="sidebar3">
+                        <li id="navDashboard3"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+                        <li id="navVehicle3"><i class="fas fa-car"></i> Vehicles</li>
+                        <li id="navStaff3"><i class="fas fa-users"></i> Staff</li>
+                        <li id="navEquipment3"><i class="fas fa-cogs"></i> Equipment</li>
+                        <li id="navField3"><i class="fas fa-tractor"></i> Fields</li>
+                        <li id="navCrops3"><i class="fas fa-seedling"></i> Crops</li>
+                        <li id="navLogs3"><i class="fas fa-book"></i> Logs</li>
+                    </ul>
+                </ul>
+            </div>
+
+
+            <button class="logoutEquipment"><i class="fas fa-sign-out-alt"></i> Log out</button>
         </div>
 
-        <button class="logoutEquipment"><i class="fas fa-sign-out-alt"></i> Log out</button>
-    </div>
+        <!-- Main Dashboard -->
+        <div class="main-dashboardEquipment">
+            <header>
+                <h1 style="padding-top: 20px;">Equipment Management</h1>
+                <div class="search-containerEquipment" style="padding-top: 20px;">
+                    <i class="fas fa-search search-iconEquipment"></i>
+                    <input type="text" class="search-barEquipment" placeholder="Search...">
+                </div>
+            </header>
+            <div id="contentEquipment">
+                <table class="equipment-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Table rows will go here -->
+                    </tbody>
+                </table>
 
-    <!-- Main Dashboard -->
-    <div class="main-dashboardEquipment">
-        <header>
-            <h1 style="padding-top: 20px;">Equipment Management</h1>
-            <div class="search-containerEquipment" style="padding-top: 20px;">
-                <i class="fas fa-search search-iconEquipment"></i>
-                <input type="text" class="search-barEquipment" placeholder="Search...">
-            </div>
-        </header>
-        <div id="contentEquipment">
-            <table class="equipment-table">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Table rows will go here -->
-                </tbody>
-            </table>
-
-            <!-- Buttons -->
-            <div class="button-containerEquipment">
-                <label for="addModalCheckboxEquipment" class="action-btnEquipment add-btnEquipment">Add</label>
-                <button class="action-btnEquipment delete-btnEquipment">Delete</button>
-                <button class="action-btnEquipment update-btnEquipment">Update</button>
+                <!-- Buttons -->
+                <div class="button-containerEquipment">
+                    <label for="addModalCheckboxEquipment" class="action-btnEquipment add-btnEquipment">Add</label>
+                    <button class="action-btnEquipment delete-btnEquipment">Delete</button>
+                    <button class="action-btnEquipment update-btnEquipment">Update</button>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </section>
 <!-- Modal Form - Using Checkbox Hack for Display Control -->
 <input type="checkbox" id="addModalCheckboxEquipment" class="modal-toggleEquipment" hidden>
@@ -391,59 +345,61 @@
 
 
 <!--------------------------------------------------vehicles------------------------------------------------------------------>
-<section id="vehicleSection">
-    <!-- Sidebar -->
-    <div class="sidebarVehicle">
-        <h3 style="padding-top: 20px;">HARVESTPRO</h3>
-        <div class="nav-menuVehicle">
-            <ul>
-                <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
-                <li><i class="fas fa-car"></i> Vehicles</li>
-                <li><i class="fas fa-users"></i> Staff</li>
-                <li><i class="fas fa-cogs"></i> Equipment</li>
-                <li><i class="fas fa-tractor"></i> Fields</li>
-                <li><i class="fas fa-seedling"></i> Crops</li>
-                <li><i class="fas fa-book"></i> Logs</li>
-            </ul>
+<section id="vehicleMainSection" class="main-content">
+    <section id="vehicleSection">
+        <!-- Sidebar -->
+        <div class="sidebarVehicle">
+            <h3 style="padding-top: 20px;">HARVESTPRO</h3>
+            <div class="nav-menuVehicle">
+                <ul id="sidebar4">
+                    <li id="navDashboard4"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+                    <li id="navVehicle4"><i class="fas fa-car"></i> Vehicles</li>
+                    <li id="navStaff4"><i class="fas fa-users"></i> Staff</li>
+                    <li id="navEquipment4"><i class="fas fa-cogs"></i> Equipment</li>
+                    <li id="navField4"><i class="fas fa-tractor"></i> Fields</li>
+                    <li id="navCrops4"><i class="fas fa-seedling"></i> Crops</li>
+                    <li id="navLogs4"><i class="fas fa-book"></i> Logs</li>
+                </ul>
+            </div>
+
+            <button class="logoutVehicle"><i class="fas fa-sign-out-alt"></i> Log out</button>
         </div>
 
-        <button class="logoutVehicle"><i class="fas fa-sign-out-alt"></i> Log out</button>
-    </div>
+        <!-- Main Dashboard -->
+        <div class="main-dashboardVehicle">
+            <header>
+                <h1 style="padding-top: 20px;">Vehicle Management</h1>
+                <div class="search-containerVehicle" style="padding-top: 20px;">
+                    <i class="fas fa-search search-iconVehicle"></i>
+                    <input type="text" class="search-barVehicle" placeholder="Search...">
+                </div>
+            </header>
+            <div id="contentVehicle">
+                <table class="vehicle-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Plate NO</th>
+                        <th>Category</th>
+                        <th>Fuel Type</th>
+                        <th>Status</th>
+                        <th>Remark</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Table rows will go here -->
+                    </tbody>
+                </table>
 
-    <!-- Main Dashboard -->
-    <div class="main-dashboardVehicle">
-        <header>
-            <h1 style="padding-top: 20px;">Vehicle Management</h1>
-            <div class="search-containerVehicle" style="padding-top: 20px;">
-                <i class="fas fa-search search-iconVehicle"></i>
-                <input type="text" class="search-barVehicle" placeholder="Search...">
-            </div>
-        </header>
-        <div id="contentVehicle">
-            <table class="vehicle-table">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Plate NO</th>
-                    <th>Category</th>
-                    <th>Fuel Type</th>
-                    <th>Status</th>
-                    <th>Remark</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Table rows will go here -->
-                </tbody>
-            </table>
-
-            <!-- Buttons -->
-            <div class="button-containerVehicle">
-                <label for="addModalCheckboxVehicle" class="action-btnVehicle add-btnVehicle">Add</label>
-                <button class="action-btnVehicle delete-btnVehicle">Delete</button>
-                <button class="action-btnVehicle update-btnVehicle">Update</button>
+                <!-- Buttons -->
+                <div class="button-containerVehicle">
+                    <label for="addModalCheckboxVehicle" class="action-btnVehicle add-btnVehicle">Add</label>
+                    <button class="action-btnVehicle delete-btnVehicle">Delete</button>
+                    <button class="action-btnVehicle update-btnVehicle">Update</button>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </section>
 <!-- Modal Form - Using Checkbox Hack for Display Control -->
 <input type="checkbox" id="addModalCheckboxVehicle" class="modal-toggleVehicle" hidden>
@@ -479,59 +435,61 @@
 
 
 <!--------------------------------------------------crops------------------------------------------------------------------>
-<section id="cropSection">
-    <!-- Sidebar -->
-    <div class="sidebarCrop">
-        <h3 style="padding-top: 20px;">HARVESTPRO</h3>
-        <div class="nav-menuCrop">
-            <ul>
-                <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
-                <li><i class="fas fa-carrot"></i> Crops</li>
-                <li><i class="fas fa-users"></i> Staff</li>
-                <li><i class="fas fa-cogs"></i> Equipment</li>
-                <li><i class="fas fa-tractor"></i> Fields</li>
-                <li><i class="fas fa-seedling"></i> Crops</li>
-                <li><i class="fas fa-book"></i> Logs</li>
-            </ul>
+<section id="cropMainSection" class="main-content">
+    <section id="cropSection">
+        <!-- Sidebar -->
+        <div class="sidebarCrop">
+            <h3 style="padding-top: 20px;">HARVESTPRO</h3>
+            <div class="nav-menuCrop">
+                <ul id="sidebar5">
+                    <li id="navDashboard5"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+                    <li id="navVehicle5"><i class="fas fa-car"></i> Vehicles</li>
+                    <li id="navStaff5"><i class="fas fa-users"></i> Staff</li>
+                    <li id="navEquipment5"><i class="fas fa-cogs"></i> Equipment</li>
+                    <li id="navField5"><i class="fas fa-tractor"></i> Fields</li>
+                    <li id="navCrops5"><i class="fas fa-seedling"></i> Crops</li>
+                    <li id="navLogs5"><i class="fas fa-book"></i> Logs</li>
+                </ul>
+            </div>
+
+            <button class="logoutCrop"><i class="fas fa-sign-out-alt"></i> Log out</button>
         </div>
 
-        <button class="logoutCrop"><i class="fas fa-sign-out-alt"></i> Log out</button>
-    </div>
+        <!-- Main Dashboard -->
+        <div class="main-dashboardCrop">
+            <header>
+                <h1 style="padding-top: 20px;">Crop Management</h1>
+                <div class="search-containerCrop" style="padding-top: 20px;">
+                    <i class="fas fa-search search-iconCrop"></i>
+                    <input type="text" class="search-barCrop" placeholder="Search...">
+                </div>
+            </header>
+            <div id="contentCrop">
+                <table class="crop-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Scientific Name</th>
+                        <th>Common Name</th>
+                        <th>Category</th>
+                        <th>Season</th>
+                        <th>Image</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Table rows will go here -->
+                    </tbody>
+                </table>
 
-    <!-- Main Dashboard -->
-    <div class="main-dashboardCrop">
-        <header>
-            <h1 style="padding-top: 20px;">Crop Management</h1>
-            <div class="search-containerCrop" style="padding-top: 20px;">
-                <i class="fas fa-search search-iconCrop"></i>
-                <input type="text" class="search-barCrop" placeholder="Search...">
-            </div>
-        </header>
-        <div id="contentCrop">
-            <table class="crop-table">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Scientific Name</th>
-                    <th>Common Name</th>
-                    <th>Category</th>
-                    <th>Season</th>
-                    <th>Image</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Table rows will go here -->
-                </tbody>
-            </table>
-
-            <!-- Buttons -->
-            <div class="button-containerCrop">
-                <label for="addModalCheckboxCrop" class="action-btnCrop add-btnCrop">Add</label>
-                <button class="action-btnCrop delete-btnCrop">Delete</button>
-                <button class="action-btnCrop update-btnCrop">Update</button>
+                <!-- Buttons -->
+                <div class="button-containerCrop">
+                    <label for="addModalCheckboxCrop" class="action-btnCrop add-btnCrop">Add</label>
+                    <button class="action-btnCrop delete-btnCrop">Delete</button>
+                    <button class="action-btnCrop update-btnCrop">Update</button>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </section>
 
 <!-- Modal Form - Using Checkbox Hack for Display Control -->
@@ -554,61 +512,64 @@
 </div>
 
 <!--------------------------------------------------staff------------------------------------------------------------------>
-<section id="staffSection">
-    <!-- Sidebar -->
-    <div class="sidebarStaff">
-        <h3 style="padding-top: 20px;">HARVESTPRO</h3>
-        <div class="nav-menuStaff">
-            <ul>
-                <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
-                <li><i class="fas fa-users"></i> Staff</li>
-                <li><i class="fas fa-cogs"></i> Equipment</li>
-                <li><i class="fas fa-tractor"></i> Fields</li>
-                <li><i class="fas fa-seedling"></i> Crops</li>
-                <li><i class="fas fa-book"></i> Logs</li>
-            </ul>
+<section id="staffMainSection" class="main-content">
+    <section id="staffSection">
+        <!-- Sidebar -->
+        <div class="sidebarStaff">
+            <h3 style="padding-top: 20px;">HARVESTPRO</h3>
+            <div class="nav-menuStaff">
+                <ul id="sidebar6">
+                    <li id="navDashboard6"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+                    <li id="navVehicle6"><i class="fas fa-car"></i> Vehicles</li>
+                    <li id="navStaff6"><i class="fas fa-users"></i> Staff</li>
+                    <li id="navEquipment6"><i class="fas fa-cogs"></i> Equipment</li>
+                    <li id="navField6"><i class="fas fa-tractor"></i> Fields</li>
+                    <li id="navCrops6"><i class="fas fa-seedling"></i> Crops</li>
+                    <li id="navLogs6"><i class="fas fa-book"></i> Logs</li>
+                </ul>
+            </div>
+
+            <button class="logoutStaff"><i class="fas fa-sign-out-alt"></i> Log out</button>
         </div>
 
-        <button class="logoutStaff"><i class="fas fa-sign-out-alt"></i> Log out</button>
-    </div>
+        <!-- Main Dashboard -->
+        <div class="main-dashboardStaff">
+            <header>
+                <h1 style="padding-top: 20px;">Staff Management</h1>
+                <div class="search-containerStaff" style="padding-top: 20px;">
+                    <i class="fas fa-search search-iconStaff"></i>
+                    <input type="text" class="search-barStaff" placeholder="Search...">
+                </div>
+            </header>
+            <div id="contentStaff">
+                <table class="staff-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>DOB</th>
+                        <th>Role</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Join Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Table rows will go here -->
+                    </tbody>
+                </table>
 
-    <!-- Main Dashboard -->
-    <div class="main-dashboardStaff">
-        <header>
-            <h1 style="padding-top: 20px;">Staff Management</h1>
-            <div class="search-containerStaff" style="padding-top: 20px;">
-                <i class="fas fa-search search-iconStaff"></i>
-                <input type="text" class="search-barStaff" placeholder="Search...">
-            </div>
-        </header>
-        <div id="contentStaff">
-            <table class="staff-table">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>DOB</th>
-                    <th>Role</th>
-                    <th>Contact</th>
-                    <th>Address</th>
-                    <th>Email</th>
-                    <th>Join Date</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Table rows will go here -->
-                </tbody>
-            </table>
-
-            <!-- Buttons -->
-            <div class="button-containerStaff">
-                <label for="addModalCheckboxStaff" class="action-btnStaff add-btnStaff">Add</label>
-                <button class="action-btnStaff delete-btnStaff">Delete</button>
-                <button class="action-btnStaff update-btnStaff">Update</button>
+                <!-- Buttons -->
+                <div class="button-containerStaff">
+                    <label for="addModalCheckboxStaff" class="action-btnStaff add-btnStaff">Add</label>
+                    <button class="action-btnStaff delete-btnStaff">Delete</button>
+                    <button class="action-btnStaff update-btnStaff">Update</button>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </section>
 
 <!-- Modal Form - Using Checkbox Hack for Display Control -->
@@ -661,11 +622,247 @@
 
 
 
-
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.js"></script>
 <script src="assets/lib/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 <script>
-<script type="module" src="assets/js/Script.js"></script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let map;
+        let marker;
+
+        // Initialize Leaflet map
+        function initMap() {
+            // Create the map instance
+            map = L.map('leaflet-map').setView([51.505, -0.09], 13); // Default location (London)
+
+            // Add OpenStreetMap tile layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Add a marker at the initial location
+            marker = L.marker([51.505, -0.09]).addTo(map);
+
+            // Ensure map resizes correctly on initialization
+            map.invalidateSize();
+        }
+
+        // Handle search button click to find location using Nominatim (OpenStreetMap geocoding)
+        document.getElementById('searchLocationBtn').addEventListener('click', function () {
+            const location = document.getElementById('location').value;
+
+            // Use Nominatim API to search for the location
+            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        // If location found, update map view and marker
+                        const lat = parseFloat(data[0].lat);
+                        const lon = parseFloat(data[0].lon);
+
+                        map.setView([lat, lon], 13); // Set map view to the new coordinates
+                        marker.setLatLng([lat, lon]); // Move the marker to the new location
+
+                        // Log the location coordinates
+                        console.log("Location Coordinates: ", lat, lon);
+
+                        // Optionally, fill latitude and longitude in hidden fields
+                        document.getElementById('latitude').value = lat;
+                        document.getElementById('longitude').value = lon;
+                    } else {
+                        alert('Location not found!');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        // Initialize the map on page load
+        initMap();
+
+        // Ensure map resizes when the window size changes
+        window.addEventListener('resize', function () {
+            if (map) {
+                map.invalidateSize();
+            }
+        });
+    });
+</script>
+<!--<script>
+    $(document).ready(function () {
+        // Initial setup: show only the dashboard, hide all other sections
+        $('#mainDashboard').css({ display: 'block' });
+        $('#vehicleMainSection').css({ display: 'none' });
+        $('#staffMainSection').css({ display: 'none' });
+        $('#equipmentMainSection').css({ display: 'none' });
+        $('#fieldMainSection').css({ display: 'none' });
+        $('#cropMainSection').css({ display: 'none' });
+        $('#logSection').css({ display: 'none' });
+        $('#loginMain').css({ display: 'none' });
+        $('#newAccountMain').css({ display: 'none' });
+
+
+        // Vehicle Navigation
+        $('#navVehicle').on('click', function () {
+            console.log("Vehicles clicked");
+            $('#mainDashboard').css({ display: 'none' });
+            $('#vehicleMainSection').css({ display: 'block' });
+            $('#staffMainSection').css({ display: 'none' });
+            $('#equipmentMainSection').css({ display: 'none' });
+            $('#fieldMainSection').css({ display: 'none' });
+            $('#cropMainSection').css({ display: 'none' });
+            $('#logSection').css({ display: 'none' });
+        });
+
+        // Staff Navigation
+        $('#navStaff').on('click', function () {
+            console.log("Staff clicked");
+            $('#mainDashboard').css({ display: 'none' });
+            $('#vehicleMainSection').css({ display: 'none' });
+            $('#staffMainSection').css({ display: 'block' });
+            $('#equipmentMainSection').css({ display: 'none' });
+            $('#fieldMainSection').css({ display: 'none' });
+            $('#cropMainSection').css({ display: 'none' });
+            $('#logSection').css({ display: 'none' });
+        });
+
+        // Equipment Navigation
+        $('#navEquipment').on('click', function () {
+            console.log("Equipment clicked");
+            $('#mainDashboard').css({ display: 'none' });
+            $('#vehicleMainSection').css({ display: 'none' });
+            $('#staffMainSection').css({ display: 'none' });
+            $('#equipmentMainSection').css({ display: 'block' });
+            $('#fieldMainSection').css({ display: 'none' });
+            $('#cropMainSection').css({ display: 'none' });
+            $('#logSection').css({ display: 'none' });
+        });
+
+        // Field Navigation
+        $('#navField').on('click', function () {
+            console.log("Fields clicked");
+            $('#mainDashboard').css({ display: 'none' });
+            $('#vehicleMainSection').css({ display: 'none' });
+            $('#staffMainSection').css({ display: 'none' });
+            $('#equipmentMainSection').css({ display: 'none' });
+            $('#fieldMainSection').css({ display: 'block' });
+            $('#cropMainSection').css({ display: 'none' });
+            $('#logSection').css({ display: 'none' });
+        });
+
+        // Crops Navigation
+        $('#navCrops').on('click', function () {
+            console.log("Crops clicked");
+            $('#mainDashboard').css({ display: 'none' });
+            $('#vehicleMainSection').css({ display: 'none' });
+            $('#staffMainSection').css({ display: 'none' });
+            $('#equipmentMainSection').css({ display: 'none' });
+            $('#fieldMainSection').css({ display: 'none' });
+            $('#cropMainSection').css({ display: 'block' });
+            $('#logSection').css({ display: 'none' });
+        });
+
+        // Logs Navigation
+        $('#navLogs').on('click', function () {
+            console.log("Logs clicked");
+            $('#mainDashboard').css({ display: 'none' });
+            $('#vehicleMainSection').css({ display: 'none' });
+            $('#staffMainSection').css({ display: 'none' });
+            $('#equipmentMainSection').css({ display: 'none' });
+            $('#fieldMainSection').css({ display: 'none' });
+            $('#cropMainSection').css({ display: 'none' });
+            $('#logSection').css({ display: 'block' });
+        });
+    });
+
+</script>-->
+<script>
+        $(document).ready(function () {
+        // Function to show the selected section and hide others
+        function showSection(sectionId) {
+            const sections = [
+                '#mainDashboard',
+                '#vehicleMainSection',
+                '#staffMainSection',
+                '#equipmentMainSection',
+                '#fieldMainSection',
+                '#cropMainSection',
+                '#logSection',
+                '#newAccountMain', // Adding newAccountMain to hide
+                '#loginMain'       // Adding loginMain to hide
+            ];
+
+            // Hide all sections
+            sections.forEach(id => $(id).css({ display: 'none' }));
+
+            // Show the selected section
+            $(sectionId).css({ display: 'block' });
+        }
+
+        // Event listeners for Sidebar 1
+        $('#navDashboard1').on('click', () => showSection('#mainDashboard'));
+        $('#navVehicle1').on('click', () => showSection('#vehicleMainSection'));
+        $('#navStaff1').on('click', () => showSection('#staffMainSection'));
+        $('#navEquipment1').on('click', () => showSection('#equipmentMainSection'));
+        $('#navField1').on('click', () => showSection('#fieldMainSection'));
+        $('#navCrops1').on('click', () => showSection('#cropMainSection'));
+        $('#navLogs1').on('click', () => showSection('#logSection'));
+
+        // Event listeners for Sidebar 2
+        $('#navDashboard2').on('click', () => showSection('#mainDashboard'));
+        $('#navVehicle2').on('click', () => showSection('#vehicleMainSection'));
+        $('#navStaff2').on('click', () => showSection('#staffMainSection'));
+        $('#navEquipment2').on('click', () => showSection('#equipmentMainSection'));
+        $('#navField2').on('click', () => showSection('#fieldMainSection'));
+        $('#navCrops2').on('click', () => showSection('#cropMainSection'));
+        $('#navLogs2').on('click', () => showSection('#logSection'));
+
+        // Event listeners for Sidebar 3
+        $('#navDashboard3').on('click', () => showSection('#mainDashboard'));
+        $('#navVehicle3').on('click', () => showSection('#vehicleMainSection'));
+        $('#navStaff3').on('click', () => showSection('#staffMainSection'));
+        $('#navEquipment3').on('click', () => showSection('#equipmentMainSection'));
+        $('#navField3').on('click', () => showSection('#fieldMainSection'));
+        $('#navCrops3').on('click', () => showSection('#cropMainSection'));
+        $('#navLogs3').on('click', () => showSection('#logSection'));
+
+        // Event listeners for Sidebar 4
+        $('#navDashboard4').on('click', () => showSection('#mainDashboard'));
+        $('#navVehicle4').on('click', () => showSection('#vehicleMainSection'));
+        $('#navStaff4').on('click', () => showSection('#staffMainSection'));
+        $('#navEquipment4').on('click', () => showSection('#equipmentMainSection'));
+        $('#navField4').on('click', () => showSection('#fieldMainSection'));
+        $('#navCrops4').on('click', () => showSection('#cropMainSection'));
+        $('#navLogs4').on('click', () => showSection('#logSection'));
+
+        // Event listeners for Sidebar 5
+        $('#navDashboard5').on('click', () => showSection('#mainDashboard'));
+        $('#navVehicle5').on('click', () => showSection('#vehicleMainSection'));
+        $('#navStaff5').on('click', () => showSection('#staffMainSection'));
+        $('#navEquipment5').on('click', () => showSection('#equipmentMainSection'));
+        $('#navField5').on('click', () => showSection('#fieldMainSection'));
+        $('#navCrops5').on('click', () => showSection('#cropMainSection'));
+        $('#navLogs5').on('click', () => showSection('#logSection'));
+
+        // Event listeners for Sidebar 6
+        $('#navDashboard6').on('click', () => showSection('#mainDashboard'));
+        $('#navVehicle6').on('click', () => showSection('#vehicleMainSection'));
+        $('#navStaff6').on('click', () => showSection('#staffMainSection'));
+        $('#navEquipment6').on('click', () => showSection('#equipmentMainSection'));
+        $('#navField6').on('click', () => showSection('#fieldMainSection'));
+        $('#navCrops6').on('click', () => showSection('#cropMainSection'));
+        $('#navLogs6').on('click', () => showSection('#logSection'));
+
+        // Initial setup: show only the dashboard and hide login and new account sections
+        showSection('#mainDashboard');
+    });
+</script>
+
+
+</script>
+
 </body>
 </html>

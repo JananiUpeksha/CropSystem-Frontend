@@ -10,6 +10,18 @@
     background-image:  url('../img/c9.jpg'); /* Update with your image path */
     background-size: cover; /* Cover the entire div */
 }
+#newAccountMain {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image:  url('../img/c9.jpg'); /* Update with your image path */
+    background-size: cover; /* Cover the entire div */
+}
 
 .account-container {
     display: flex;

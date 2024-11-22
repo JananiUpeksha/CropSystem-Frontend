@@ -1,5 +1,5 @@
 /* Main Vehicle Section */
-#vehicleSection {
+#vehicleSection ,#vehicleMainSection{
     width: 100vw;
     height: 100vh;
     margin: 0;
@@ -93,10 +93,10 @@
 /* Main Dashboard */
 .main-dashboardVehicle {
     width: 80%;
-    background-color: #ffffff;
+    background-color: mediumpurple;
     display: flex;
     flex-direction: column;
-    height: 95%;
+    height: 100%;
     padding: 20px;
 }
 

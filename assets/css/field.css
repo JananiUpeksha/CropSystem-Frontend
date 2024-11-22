@@ -7,6 +7,14 @@
     overflow: hidden;
     display: flex;
 }
+#fieldMainSection {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+}
 
 /* Sidebar Styling */
 .sidebarField {
@@ -93,10 +101,10 @@
 /* Main Dashboard */
 .main-dashboardField {
     width: 80%;
-    background-color: #ffffff;
+    background-color: red;
     display: flex;
     flex-direction: column;
-    height: 95%;
+    height: 100%;
     padding: 20px;
 }
 
@@ -198,7 +206,6 @@ h1 {
 .update-btnField {
     background-color: #ffc107;
 }
-
 /* Modal Styling */
 .modalField {
     display: none;
@@ -217,10 +224,15 @@ h1 {
     background-size: cover;
     padding: 20px;
     border-radius: 8px;
-    width: 400px;
-    max-width: 80%;
+    width: 700px; /* Decreased width */
+    max-width: 90%; /* Ensure it doesn't overflow the screen */
+    height: 80%; /* Adjusted height */
+    max-height: 90%; /* Prevent it from being too tall */
+    overflow-y: auto; /* Make content scrollable if necessary */
     position: relative;
+    text-align: center;
 }
+
 /* Dark overlay */
 .modal-contentField::before {
     content: "";
@@ -230,9 +242,9 @@ h1 {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black overlay */
-    border-radius: 8px; /* Match the border-radius */
-    pointer-events: none; /* Allows interaction with elements under the overlay */
-    z-index: 0; /* Make sure overlay is beneath text */
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* Ensuring content is above overlay */
@@ -245,30 +257,63 @@ h1 {
     margin-top: 0;
 }
 
-.modal-contentField form input,
-.modal-contentField form button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+/* Increased height and reduced width for input fields, selects, and buttons */
+.modal-contentField form {
+    display: flex;
+    flex-direction: column; /* Arrange elements vertically */
+    align-items: center; /* Center-align all form elements */
+    justify-content: center; /* Ensure elements are centered vertically */
 }
 
+.modal-contentField form input,
+.modal-contentField form select,
+.modal-contentField form button {
+    width: 90%; /* Decreased width */
+    padding: 12px; /* Increased padding for height */
+    margin-top: 8px; /* Reduced margin between fields */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px; /* Font size */
+}
+
+/* Style for buttons to make them match the smaller form fields */
 .modal-contentField form button {
     background-image: url('../img/c6.jpg');
     background-size: cover;
     color: white;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px; /* Button text size */
     position: relative;
     overflow: hidden;
-    padding: 10px 20px;
+    padding: 12px 24px; /* Increased padding for button height */
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
-    border-radius: 5px;
+    width: 90%; /* Same width as input fields */
+    margin-top: 15px; /* Add margin to space it out from the fields */
 }
+/* Map Styling */
+#leaflet-map {
+    width: 100%; /* Ensure the map takes full width of its container */
+    height: 100%; /* Ensure the map takes full height of its container */
+    border-radius: 8px;
+    box-sizing: border-box; /* Ensure padding and borders are included in the map's total width/height */
+}
+
+/* Map Container Styling */
+.map-container {
+    width: 100%; /* Ensure the container takes up full width */
+    height: 400px; /* Set a fixed height to fit the map */
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f0f0f0; /* Set background color to gray */
+    display: flex; /* Make the container a flex container */
+    align-items: stretch; /* Make sure the map stretches to fill the container */
+    justify-content: center; /* Center the map inside the container */
+}
+
 
 /* Checkbox Hack for Modal Display */
 .modal-toggleField:checked ~ .modalField {
@@ -321,4 +366,3 @@ h1 {
     position: relative;
     z-index: 1; /* Ensure the icon stays above the radial gradient effect */
 }
-

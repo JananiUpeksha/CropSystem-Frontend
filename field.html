@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /* Main Field Section */
+        #fieldField {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* Sidebar Styling */
+        .sidebarField {
+            background-image: url('../img/c6.jpg'); /* Update with your image path */
+            background-size: cover;
+            color: white;
+            width: 20%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+
+        .sidebarField h3, .sidebarField p, .nav-menuField li {
+            color: rgba(255, 255, 255, 1);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            font-weight: bold;
+        }
+
+        .nav-menuField {
+            padding-top: 30px;
+        }
+
+        .nav-menuField ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .nav-menuField li {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            font-size: 1em;
+            color: #ffffffb3;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: background 0.3s;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-menuField li:hover {
+            background-color: #6b9997;
+            color: white;
+        }
+
+        .nav-menuField li i {
+            margin-right: 10px;
+            font-size: 1.2em;
+            filter: brightness(1.5);
+        }
+
+        .nav-menuField li:hover i {
+            filter: brightness(1.8);
+        }
+
+        /* Logout Button */
+        .logoutField {
+            margin-top: auto;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .logoutField i {
+            margin-right: 8px;
+        }
+
+        .logoutField:hover {
+            background-color: #ff5a5a;
+        }
+
+        /* Main Dashboard */
+        .main-dashboardField {
+            width: 80%;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            height: 95%;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Search Bar */
+        .search-containerField {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-right: 40px;
+        }
+
+        .search-barField {
+            padding: 10px 20px 10px 40px;
+            border-radius: 10px;
+            border: 1px solid #d1d1d1;
+            width: 300px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+
+        .search-iconField {
+            position: absolute;
+            left: 10px;
+            font-size: 1em;
+            color: #888;
+        }
+
+        /* Content Field Styling */
+        #contentFieldField {
+            background-color: #4caf50;
+            flex: 1;
+            border-radius: 10px;
+            margin-top: 20px;
+            width: 99%;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        /* Table Styling */
+        .field-tableField {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            flex: 1;
+        }
+
+        .field-tableField th, .field-tableField td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .field-tableField th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        /* Button Container - Positioned at Bottom of Content Field */
+        .button-containerField {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+            padding-right: 20px;
+        }
+
+        /* Button Styling */
+        .action-btnField {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .add-btnField {
+            background-color: #28a745;
+        }
+
+        .delete-btnField {
+            background-color: #dc3545;
+        }
+
+        .update-btnField {
+            background-color: #ffc107;
+        }
+
+        /* Overall Modal Container */
+        .modalField {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Slightly darker backdrop for better focus */
+            z-index: 1000; /* Ensures modal stays on top */
+        }
+
+        /* Modal Content */
+        .modal-contentField {
+            background-image: url('../img/c6.jpg');
+
+            border-radius: 12px;
+            width: 60%;
+            max-width: 800px;
+            max-height: 90%;
+            padding: 20px;
+            overflow-y: auto; /* Handles overflow for long forms */
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3); /* Slightly larger shadow for depth */
+            position: relative;
+            animation: fadeIn 0.3s ease-in-out; /* Adds a subtle fade-in effect */
+        }
+
+        /* Modal Header */
+        .modal-contentField h2 {
+            text-align: center;
+            margin: 0 0 20px;
+            color: #222222; /* Darker color for better contrast */
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        /* Form Fields */
+        .modal-contentField form input,
+        .modal-contentField form select,
+        .modal-contentField form button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 12px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        .modal-contentField form input:focus,
+        .modal-contentField form select:focus {
+            border-color: #007BFF; /* Highlight active input fields */
+            outline: none;
+        }
+
+        /* Search Location Button */
+        #searchLocationBtn {
+            background-color: #007BFF;
+            color: #ffffff;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            padding: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #searchLocationBtn:hover {
+            background-color: #0056b3;
+            transform: scale(1.02); /* Subtle scaling effect */
+        }
+
+        /* Dropdowns */
+        .modal-contentField form select {
+            appearance: none; /* Removes native styling for consistency */
+            background-color: #f9f9f9;
+        }
+
+        /* Map Styling */
+        #map {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        /* Map Container Styling */
+        .map-container {
+            max-height: 300px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        /* Media Query for Small Screens */
+        @media (max-width: 768px) {
+            .modal-contentField {
+                width: 90%;
+                padding: 15px;
+            }
+
+            #map {
+                height: 200px; /* Reduce map height on smaller screens */
+            }
+
+            .map-container {
+                max-height: 200px;
+            }
+        }
+
+        /* Keyframes for Modal Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        form label {
+            display: block; /* Ensures each label starts on a new line */
+            margin-top: 10px; /* Adds spacing above each label */
+            font-weight: bold; /* Makes labels stand out */
+            color: #333; /* Enhances text visibility */
+        }
+
+        form input[type="file"] {
+            margin-top: 5px; /* Adds space between label and input */
+        }
+
+    </style>
+</head>
+<body>
+<form>
+    <input type="text" id="fieldName" placeholder="Field Name">
+
+    <!-- Search input for location -->
+    <input type="text" id="locationSearch" placeholder="Search for a location (e.g., Colombo, Sri Lanka)">
+    <button type="button" id="searchLocationBtn">Search</button>
+
+    <!-- Location map container -->
+    <div class="map-container">
+        <div id="map"></div>
+    </div>
+    <input type="hidden" id="latitude" name="latitude">
+    <input type="hidden" id="longitude" name="longitude">
+
+    <input type="number" id="fieldSize" placeholder="Size (acres)">
+
+    <!-- Dropdowns for staff -->
+    <select id="staff1" name="staff1">
+        <option value="" disabled selected>Add Staff 1</option>
+        <option value="staff1Id1">Staff 1 - Name A</option>
+        <option value="staff1Id2">Staff 1 - Name B</option>
+    </select>
+
+    <select id="staff2" name="staff2">
+        <option value="" disabled selected>Add Staff 2</option>
+        <option value="staff2Id1">Staff 2 - Name A</option>
+        <option value="staff2Id2">Staff 2 - Name B</option>
+    </select>
+
+    <select id="staff3" name="staff3">
+        <option value="" disabled selected>Add Staff 3</option>
+        <option value="staff3Id1">Staff 3 - Name A</option>
+        <option value="staff3Id2">Staff 3 - Name B</option>
+    </select>
+
+    <label for="image1">Upload Image 1:</label>
+    <input type="file" id="image1" name="image1" accept="image/*">
+
+    <label for="image2">Upload Image 2:</label>
+    <input type="file" id="image2" name="image2" accept="image/*">
+
+    <button type="button" id="saveBtn">Save</button>
+    <button type="button" id="clearBtn">Clear</button>
+</form>
+
+</body>
+</html>
