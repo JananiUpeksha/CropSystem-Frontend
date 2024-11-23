@@ -93,7 +93,6 @@
 /* Main Dashboard */
 .main-dashboardVehicle {
     width: 80%;
-    background-color: mediumpurple;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -113,33 +112,9 @@ h1 {
     color: #333;
 }
 
-/* Search Bar */
-.search-containerVehicle {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-right: 40px;
-}
-
-.search-barVehicle {
-    padding: 10px 20px 10px 40px;
-    border-radius: 10px;
-    border: 1px solid #d1d1d1;
-    width: 300px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    outline: none;
-}
-
-.search-iconVehicle {
-    position: absolute;
-    left: 10px;
-    font-size: 1em;
-    color: #888;
-}
 
 /* Content Vehicle Styling */
 #contentVehicle {
-    background-color: #4caf50;
     flex: 1;
     border-radius: 10px;
     margin-top: 20px;
@@ -149,23 +124,15 @@ h1 {
     padding: 20px;
 }
 
-/* Table Styling */
-.vehicle-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    flex: 1;
-}
-
-.vehicle-table th, .vehicle-table td {
+/* Table Styling (Overrides Bootstrap defaults if necessary) */
+.table th, .table td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
 }
 
-.vehicle-table th {
-    background-color: #f4f4f4;
-    font-weight: bold;
+/* Optional: Add custom hover effects */
+.table-striped tbody tr:hover {
+    background-color: #f1f1f1;
 }
 
 /* Button Container - Positioned at Bottom of Content Vehicle */
@@ -187,16 +154,47 @@ h1 {
     font-size: 16px;
 }
 
+/* Button Styling */
+.action-btnVehicle {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text */
+    border-radius: 25px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold font */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth color transition on hover */
+}
+
+/* Add Button specific styling */
 .add-btnVehicle {
-    background-color: #28a745;
+    background-color: #4caf50;
 }
 
-.delete-btnVehicle {
-    background-color: #dc3545;
+.add-btnVehicle:hover {
+    background-color: #45a049; /* Darker green on hover */
 }
 
-.update-btnVehicle {
-    background-color: #ffc107;
+.add-btnVehicle i {
+    transition: transform 0.3s ease; /* Smooth icon animation */
+}
+
+.add-btnVehicle:hover i {
+    transform: scale(1.1); /* Slightly enlarge icons on hover */
+}
+
+/* Styling for the plus icon */
+.add-btnVehicle i.fas.fa-plus {
+    margin-left: 5px;
+    font-size: 18px; /* Slightly larger plus icon */
+}
+
+/* Styling for the car icon */
+.add-btnVehicle i.fas.fa-car {
+    margin-left: 8px;
+    font-size: 18px; /* Slightly larger car icon */
 }
 
 /* Modal Styling */
@@ -310,24 +308,49 @@ h1 {
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 20px;
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.9), rgba(150, 0, 0, 0.8));
+    font-size: 18px;
+    cursor: pointer;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.8), rgba(150, 0, 0, 0.9));
     color: white;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+    z-index: 2;
 }
 
 .close-btnVehicle:hover {
+    background: linear-gradient(135deg, rgba(255, 50, 50, 1), rgba(200, 0, 0, 1));
     transform: scale(1.1);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 }
+
+.close-btnVehicle::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent);
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.close-btnVehicle:hover::before {
+    opacity: 1;
+}
+
+/* Checkbox Hack for Modal Display */
+.modal-toggleVehicle:checked ~ .modalVehicle {
+    display: flex;
+}
+
+
 
 
 

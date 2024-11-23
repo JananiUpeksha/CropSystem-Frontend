@@ -369,13 +369,14 @@
         <div class="main-dashboardVehicle">
             <header>
                 <h1 style="padding-top: 20px;">Vehicle Management</h1>
-                <div class="search-containerVehicle" style="padding-top: 20px;">
-                    <i class="fas fa-search search-iconVehicle"></i>
-                    <input type="text" class="search-barVehicle" placeholder="Search...">
-                </div>
+                <label for="addModalCheckboxVehicle" class="action-btnVehicle add-btnVehicle">
+                    Add Vehicle Here
+                    <i class="fas fa-car" style="margin-left: 8px;"></i>
+                    <i class="fas fa-plus" style="margin-left: 5px;"></i>
+                </label>
             </header>
             <div id="contentVehicle">
-                <table class="vehicle-table">
+                <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -390,14 +391,8 @@
                     <!-- Table rows will go here -->
                     </tbody>
                 </table>
-
-                <!-- Buttons -->
-                <div class="button-containerVehicle">
-                    <label for="addModalCheckboxVehicle" class="action-btnVehicle add-btnVehicle">Add</label>
-                    <button class="action-btnVehicle delete-btnVehicle">Delete</button>
-                    <button class="action-btnVehicle update-btnVehicle">Update</button>
-                </div>
             </div>
+
         </div>
     </section>
 </section>
@@ -405,10 +400,17 @@
 <input type="checkbox" id="addModalCheckboxVehicle" class="modal-toggleVehicle" hidden>
 <div class="modalVehicle">
     <div class="modal-contentVehicle">
+        <!-- Close Button -->
         <label for="addModalCheckboxVehicle" class="close-btnVehicle">&times;</label>
         <h2>Add Vehicle Data</h2>
         <form>
-            <input type="text" placeholder="ID" required>
+            <div style="display: flex; align-items: center;">
+                <select class="styled-select" name="vehicleId" id="vehicleId" required>
+                    <option value="">Select Vehicle ID</option>
+                    <!-- Options will be populated dynamically -->
+                </select>
+                <button type="button" id="searchVehicle" style="margin-left: 10px;">Search</button>
+            </div>
             <input type="text" placeholder="Plate No" required>
             <input type="text" placeholder="Category" required>
             <input type="text" placeholder="Fuel Type" required>
@@ -420,17 +422,19 @@
                 <option value="not_available">Not Available</option>
             </select>
 
+            <select class="styled-select" name="status" id="staffIds" required></select>
             <textarea placeholder="Remark" rows="3"></textarea>
 
-            <!-- Image Upload Fields -->
-            <input type="file" accept="image/*" placeholder="Upload Image 1">
-            <input type="file" accept="image/*" placeholder="Upload Image 2">
-
-            <button type="button">Save</button>
-            <button type="button">Clear</button>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <button type="button" id="saveVehicle">Save</button>
+                <button type="button" id="clearVehicle">Clear</button>
+                <button type="button" id="updateVehicle">Update</button>
+                <button type="button" id="deleteVehicle">Delete</button>
+            </div>
         </form>
     </div>
 </div>
+
 
 
 
@@ -860,9 +864,8 @@
         showSection('#mainDashboard');
     });
 </script>
+<script type="module" src="assets/js/Vehicle.js"></script>
 
-
-</script>
 
 </body>
 </html>
