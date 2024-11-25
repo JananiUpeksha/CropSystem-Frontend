@@ -93,7 +93,6 @@
 /* Main Dashboard */
 .main-dashboardEquipment {
     width: 80%;
-    background-color: greenyellow;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -139,7 +138,16 @@ h1 {
 
 /* Content Equipment Styling */
 #contentEquipment {
-    background-color: #4caf50;
+    flex: 1;
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 99%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+/* Content Vehicle Styling */
+#contentVehicle {
     flex: 1;
     border-radius: 10px;
     margin-top: 20px;
@@ -149,25 +157,16 @@ h1 {
     padding: 20px;
 }
 
-/* Table Styling */
-.equipment-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    flex: 1;
-}
-
-.equipment-table th, .equipment-table td {
+/* Table Styling (Overrides Bootstrap defaults if necessary) */
+.table th, .table td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
 }
 
-.equipment-table th {
-    background-color: #f4f4f4;
-    font-weight: bold;
+/* Optional: Add custom hover effects */
+.table-striped tbody tr:hover {
+    background-color: #f1f1f1;
 }
-
 /* Button Container - Positioned at Bottom of Content Equipment */
 .button-containerEquipment {
     display: flex;
