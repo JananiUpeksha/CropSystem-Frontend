@@ -198,17 +198,14 @@ h1 {
 .add-btnCrop {
     background-color: #28a745;
 }
-
-.delete-btnCrop {
-    background-color: #dc3545;
-}
-
-.update-btnCrop {
-    background-color: #ffc107;
+#searchCropIdBtn{
+    position: relative; /* Ensure it respects its containing element */
+    z-index: 1; /* Lower z-index than the modal */
 }
 
 /* Modal Styling */
 .modalCrop {
+    z-index: 1050;
     display: none;
     position: fixed;
     top: 0;

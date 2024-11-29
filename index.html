@@ -90,13 +90,14 @@
                         <div class="input-group">
                             <select id="role" class="form-select transparent-input">
                                 <option value="" selected disabled>Select your role</option>
-                                <option value="admin">Admin</option>
-                                <option value="staff">Staff</option>
-                                <option value="user">User</option>
+                                <option value="ADMINISTRATOR">ADMINISTRATOR</option>  <!-- Update role names here -->
+                                <option value="MANAGER">MANAGER</option>
+                                <option value="SCIENTIST">SCIENTIST</option>
+                                <option value="OTHER">OTHER</option>
                             </select>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-secondary w-100 mt-3" id="CreateAccountBackBtn">Back</button>
+                    <button type="button" class="btn btn-secondary w-100 mt-3" id="CreateAccountclearBtn">Clear</button>
                     <button type="button" class="btn btn-secondary w-100 mt-2" id="saveAccountBtn">Create Account</button> <!-- New Create Account button -->
                 </form>
             </div>
@@ -182,35 +183,138 @@
             <div class="main-dashboardField">
                 <header>
                     <h1 style="padding-top: 20px;">Field Management</h1>
-                    <div class="search-containerField" style="padding-top: 20px;">
-                        <i class="fas fa-search search-iconField"></i>
-                        <input type="text" class="search-barField" placeholder="Search...">
-                    </div>
+                    <label for="addModalCheckboxField" class="action-btnField add-btnField">
+                        Add Field Here
+                        <i class="fas fa-tractor" style="margin-left: 8px;"></i>
+                        <i class="fas fa-plus" style="margin-left: 5px;"></i>
+                    </label>
                 </header>
-                <div id="contentFieldField">
-                    <table class="field-tableField">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Size</th>
-                            <th>Location</th>
-                            <th>Image1</th>
-                            <th>Image2</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <!-- Table rows will go here -->
-                        </tbody>
-                    </table>
+                <div id="contentFieldField" class="container mt-3" style="max-height: 80vh; overflow-y: auto;">
+                    <!-- Bootstrap Card -->
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h4>Field Management</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="fieldForm">
+                                <div class="grid-container" id="fieldFormGrid">
+                                    <!-- First Column (All Input Fields) -->
+                                    <div class="grid-item" id="inputFieldsColumn">
+                                        <!-- Field ID Dropdown and Search -->
+                                        <div class="mb-3" id="fieldIdGroup">
+                                            <label for="fieldId" class="form-label">Select Field ID</label>
+                                            <div class="input-group">
+                                                <select id="fieldId" class="form-select">
+                                                    <option value="">Select Field</option>
+                                                    <option value="field1">Field 1</option>
+                                                    <option value="field2">Field 2</option>
+                                                    <option value="field3">Field 3</option>
+                                                </select>
+                                                <button type="button" class="btn btn-primary" id="searchFieldIdBtn">
+                                                    Search
+                                                </button>
+                                            </div>
+                                        </div>
 
-                    <!-- Buttons -->
-                    <div class="button-containerField">
-                        <label for="addModalCheckboxField" class="action-btnField add-btnField">Add</label>
-                        <button class="action-btnField delete-btnField">Delete</button>
-                        <button class="action-btnField update-btnField">Update</button>
+                                        <!-- Field Name and Location -->
+                                        <div class="mb-3" id="fieldNameGroup">
+                                            <input type="text" class="form-control" id="fieldNameF" placeholder="Field Name">
+                                        </div>
+                                        <div class="mb-3" id="fieldLocationGroup">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="fieldIdF" placeholder="Field ID">
+                                            </div>
+                                        </div>
+
+                                        <!-- Field Size -->
+                                        <div class="mb-3" id="fieldSizeGroup">
+                                            <input type="number" class="form-control" id="fieldSizeF" placeholder="Size (acres)">
+                                        </div>
+
+                                        <!-- Staff Selection -->
+                                        <div class="mb-3" id="staffSelectionGroup1">
+                                            <label for="staff1" class="form-label">Select Staff 1</label>
+                                            <select id="staff1F" name="staff1" class="form-select">
+                                                <option value="">Select Staff 1</option>
+                                                <option value="staff1_id">Staff Member 1</option>
+                                                <option value="staff2_id">Staff Member 2</option>
+                                                <option value="staff3_id">Staff Member 3</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3" id="staffSelectionGroup2">
+                                            <label for="staff2" class="form-label">Select Staff 2</label>
+                                            <select id="staff2F" name="staff2" class="form-select">
+                                                <option value="">Select Staff 2</option>
+                                                <option value="staff1_id">Staff Member 1</option>
+                                                <option value="staff2_id">Staff Member 2</option>
+                                                <option value="staff3_id">Staff Member 3</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3" id="staffSelectionGroup3">
+                                            <label for="staff3" class="form-label">Select Staff 3</label>
+                                            <select id="staff3F" name="staff3" class="form-select">
+                                                <option value="">Select Staff 3</option>
+                                                <option value="staff1_id">Staff Member 1</option>
+                                                <option value="staff2_id">Staff Member 2</option>
+                                                <option value="staff3_id">Staff Member 3</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Hidden Fields for Latitude and Longitude -->
+                                        <input type="hidden" id="latitudeF">
+                                        <input type="hidden" id="longitudeF">
+                                    </div>
+
+                                    <!-- Second Column (Image Viewers and Map) -->
+                                    <div class="grid-item" id="mediaColumn">
+                                        <!-- Map Viewer -->
+                                        <div class="mb-3 map-container" id="mapContainer">
+                                            <div id="leaflet-mapF" style="height: 300px; border: 1px solid #ccc;"></div>
+                                        </div>
+
+                                        <!-- Image Viewers -->
+                                        <div class="mb-3" id="imageViewer1">
+                                            <label for="image1" class="form-label">Image Viewer 1</label>
+                                            <input type="file" id="image1F" accept="image/*" class="form-control" onchange="previewImage('image1', 'image1Preview')">
+                                            <div class="mt-2">
+                                                <img id="image1Preview" src="" alt="Image 1 Preview" class="img-thumbnail" style="max-width: 200px;">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3" id="imageViewer2">
+                                            <label for="image2" class="form-label">Image Viewer 2</label>
+                                            <input type="file" id="image2F" accept="image/*" class="form-control" onchange="previewImage('image2', 'image2Preview')">
+                                            <div class="mt-2">
+                                                <img id="image2Preview" src="" alt="Image 2 Preview" class="img-thumbnail" style="max-width: 200px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn btn-success">Save Field</button>
+                            </form>
+
+                        </div>
                     </div>
                 </div>
+
+                <!--<script>
+                    // Function to preview images
+                    function previewImage(inputId, previewId) {
+                        const input = document.getElementById(inputId);
+                        const preview = document.getElementById(previewId);
+                        if (input.files && input.files[0]) {
+                            const reader = new FileReader();
+                            reader.onload = function (e) {
+                                preview.src = e.target.result;
+                            };
+                            reader.readAsDataURL(input.files[0]);
+                        } else {
+                            preview.src = "";
+                        }
+                    }
+                </script>-->
+
             </div>
         </section>
     </section>
@@ -221,48 +325,76 @@
         <label for="addModalCheckboxField" class="close-btnField">&times;</label>
         <h2>Add Field Data</h2>
         <form>
-            <input type="text" id="fieldName" placeholder="Field Name">
-            <input type="text" id="location" placeholder="Location">
-            <button type="button" id="searchLocationBtn">Search Location</button>
+            <div class="grid-container">
+                <!-- First row: Field Name, Location, and Search Button -->
+                <div class="grid-item">
+                    <input type="text" id="fieldName" placeholder="Field Name">
+                </div>
+                <div class="grid-item">
+                    <button type="button" id="searchFieldIDM">Search</button>
+                </div>
+                <div class="grid-item">
+                    <input type="text" id="locationM" placeholder="Location">
+                </div>
 
-            <!-- Location map container -->
-            <div class="map-container">
-                <div id="leaflet-map"></div>
+                <!-- Second row: Image Uploaders and Field Size -->
+                <div class="grid-item">
+                    <input type="file" id="image1" accept="image/*" placeholder="Upload Image 1">
+                </div>
+                <div class="grid-item">
+                    <input type="file" id="image2" accept="image/*" placeholder="Upload Image 2">
+                </div>
+                <div class="grid-item">
+                    <input type="number" id="fieldSize" placeholder="Size (acres)">
+                </div>
+
+
+                <!-- Dropdowns for adding staff -->
+                <div class="grid-item">
+                    <select id="staff1" name="staff1"></select>
+                </div>
+                <div class="grid-item">
+                    <select id="staff2" name="staff2"></select>
+                </div>
+                <div class="grid-item">
+                    <select id="staff3" name="staff3"></select>
+                </div>
+
+                <!-- Third row: Location input field and Search button in the same row -->
+                <div class="grid-item location-search" style="grid-column: span 3; display: flex; gap: 10px;">
+                    <input type="text" id="location" placeholder="Location" >
+                    <button type="button" id="searchLocationBtn">Search Location</button>
+                </div>
+
+
+
+                <!-- Map Container (takes the whole row) -->
+                <div class="map-container" style="grid-column: span 3;">
+                    <div id="leaflet-map"></div>
+                </div>
+
+                <!-- Hidden fields for storing latitude and longitude -->
+                <div class="grid-item">
+                    <input type="hidden" id="latitude">
+                </div>
+                <div class="grid-item">
+                    <input type="hidden" id="longitude">
+                </div>
+
+                <!-- Action buttons -->
+                <div class="grid-item" style="grid-column: span 3;">
+                    <div class="button-container">
+                        <button type="button" id="saveField">Save</button>
+                        <button type="button" id="clearField">Clear</button>
+                        <button type="button" id="updateField">Update</button>
+                        <button type="button" id="deleteField">Delete</button>
+                    </div>
+                </div>
             </div>
-
-            <input type="number" id="fieldSize" placeholder="Size (acres)">
-            <input type="file" id="image1" accept="image/*" placeholder="Upload Image 1">
-            <input type="file" id="image2" accept="image/*" placeholder="Upload Image 2">
-
-            <!-- Hidden fields for storing latitude and longitude -->
-            <input type="hidden" id="latitude">
-            <input type="hidden" id="longitude">
-
-            <!-- Dropdowns for adding staff -->
-            <select id="staff1" name="staff1">
-                <option value="">Select Staff 1</option>
-                <option value="staff1_id">Staff Member 1</option>
-                <option value="staff2_id">Staff Member 2</option>
-                <option value="staff3_id">Staff Member 3</option>
-            </select>
-
-            <select id="staff2" name="staff2">
-                <option value="">Select Staff 2</option>
-                <option value="staff1_id">Staff Member 1</option>
-                <option value="staff2_id">Staff Member 2</option>
-                <option value="staff3_id">Staff Member 3</option>
-            </select>
-
-            <select id="staff3" name="staff3">
-                <option value="">Select Staff 3</option>
-                <option value="staff1_id">Staff Member 1</option>
-                <option value="staff2_id">Staff Member 2</option>
-                <option value="staff3_id">Staff Member 3</option>
-            </select>
-
-            <button type="button">Save</button>
-            <button type="button">Clear</button>
         </form>
+
+
+
     </div>
 </div>
 <!--------------------------------------------------equipment------------------------------------------------------------------>
@@ -474,34 +606,86 @@
         <div class="main-dashboardCrop">
             <header>
                 <h1 style="padding-top: 20px;">Crop Management</h1>
-                <div class="search-containerCrop" style="padding-top: 20px;">
-                    <i class="fas fa-search search-iconCrop"></i>
-                    <input type="text" class="search-barCrop" placeholder="Search...">
-                </div>
+                <label for="addModalCheckboxCrop" class="action-btnCrop add-btnCrop">
+                    Add Crop Here
+                    <i class="fas fa-seedling" style="margin-left: 8px;"></i>
+                    <i class="fas fa-plus" style="margin-left: 5px;"></i>
+                </label>
             </header>
-            <div id="contentCrop">
-                <table class="crop-table">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Scientific Name</th>
-                        <th>Common Name</th>
-                        <th>Category</th>
-                        <th>Season</th>
-                        <th>Image</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- Table rows will go here -->
-                    </tbody>
-                </table>
+                <div id="contentCrop" class="container mt-3">
+                    <div class="row">
+                        <!-- Form Card (Left) -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header bg-success text-white">
+                                    <h4>Crop Management</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <!-- Crop ID Dropdown and Search -->
+                                        <div class="mb-3">
+                                            <label for="cropId" class="form-label">Select Crop ID</label>
+                                            <div class="input-group">
+                                                <select id="cropId" class="form-select">
+                                                    <option value="">Select Crop</option>
+                                                    <option value="crop1">Crop 1</option>
+                                                    <option value="crop2">Crop 2</option>
+                                                    <option value="crop3">Crop 3</option>
+                                                </select>
+                                                <button type="button" class="btn btn-primary" id="searchCropIdBtn">
+                                                    Search
+                                                </button>
+                                            </div>
+                                        </div>
 
-                <!-- Buttons -->
-                <div class="button-containerCrop">
-                    <label for="addModalCheckboxCrop" class="action-btnCrop add-btnCrop">Add</label>
-                    <button class="action-btnCrop delete-btnCrop">Delete</button>
-                    <button class="action-btnCrop update-btnCrop">Update</button>
-                </div>
+                                        <!-- Form Fields -->
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" placeholder="Scientific Name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" placeholder="Common Name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="number" class="form-control" placeholder="Category">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" placeholder="Season">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="cropImage" class="form-label">Upload Image</label>
+                                            <input type="file" id="cropImage" accept="image/*" class="form-control">
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Cards (Right) -->
+                        <div class="col-md-6">
+                            <div class="d-grid gap-3">
+                                <!-- Card 1 -->
+                                <div class="card">
+                                    <div class="card-header bg-info text-white">
+                                        <h5>Crop Statistics</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Use this space to display crop-related statistics or analytics.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Card 2 -->
+                                <div class="card">
+                                    <div class="card-header bg-warning text-white">
+                                        <h5>Recent Activity</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Show recent updates, logs, or notifications related to crops here.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </section>
@@ -520,8 +704,12 @@
             <input type="text" placeholder="Season">
             <input type="file" accept="image/*" placeholder="Upload Image">
 
-            <button type="button">Save</button>
-            <button type="button">Clear</button>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <button type="button" id="saveCrop">Save</button>
+                <button type="button" id="clearCrop">Clear</button>
+                <button type="button" id="updateCrop">Update</button>
+                <button type="button" id="deleteCrop">Delete</button>
+            </div>
         </form>
     </div>
 </div>
@@ -794,7 +982,7 @@
     });
 
 </script>-->
-<script>
+<!--<script>
         $(document).ready(function () {
         // Function to show the selected section and hide others
         function showSection(sectionId) {
@@ -872,11 +1060,15 @@
         $('#navLogs6').on('click', () => showSection('#logSection'));
 
         // Initial setup: show only the dashboard and hide login and new account sections
-        showSection('#mainDashboard');
+        showSection('#loginMain');
     });
-</script>
-<script type="module" src="assets/js/Vehicle.js"></script>
+</script>-->
+
+<script type="module" src="assets/js/Script.js"></script>
+<script type="module" src="assets/js/Login.js"></script>
+<script type="module" src="assets/js/SignUp.js"></script>
 <script type="module" src="assets/js/Equipment.js"></script>
+<script type="module" src="assets/js/Vehicle.js"></script>
 
 
 </body>

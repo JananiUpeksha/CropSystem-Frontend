@@ -118,10 +118,10 @@
     opacity: 0.8; /* Slightly darker on hover */
 }
 #saveAccountBtn{
-    background-color: #e9ecef;
+    background-color:#adb5bd;
     color: black;
 }
-#CreateAccountBackBtn{
-    background-color: #e9ecef;
+#CreateAccountclearBtn{
+    background-color:#adb5bd;
     color: black;
 }
