@@ -193,8 +193,9 @@
                     <!-- Bootstrap Card -->
                     <div class="card">
                         <div class="card-header bg-primary text-white">
-                            <h4>Field Management</h4>
+                            <h5 class="text-center">Field Related Information</h5>
                         </div>
+
                         <div class="card-body">
                             <form id="fieldForm">
                                 <div class="grid-container" id="fieldFormGrid">
@@ -202,19 +203,20 @@
                                     <div class="grid-item" id="inputFieldsColumn">
                                         <!-- Field ID Dropdown and Search -->
                                         <div class="mb-3" id="fieldIdGroup">
-                                            <label for="fieldId" class="form-label">Select Field ID</label>
-                                            <div class="input-group">
-                                                <select id="fieldId" class="form-select">
-                                                    <option value="">Select Field</option>
-                                                    <option value="field1">Field 1</option>
-                                                    <option value="field2">Field 2</option>
-                                                    <option value="field3">Field 3</option>
-                                                </select>
-                                                <button type="button" class="btn btn-primary" id="searchFieldIdBtn">
-                                                    Search
-                                                </button>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <select id="fieldId" class="form-select">
+                                                        <option value="">Select Field</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-6">
+                                                    <button type="button" class="btn btn-primary w-100" id="searchFieldIdBtn">
+                                                        Search
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
+
 
                                         <!-- Field Name and Location -->
                                         <div class="mb-3" id="fieldNameGroup">
@@ -231,45 +233,40 @@
                                             <input type="number" class="form-control" id="fieldSizeF" placeholder="Size (acres)">
                                         </div>
 
-                                        <!-- Staff Selection -->
-                                        <div class="mb-3" id="staffSelectionGroup1">
-                                            <label for="staff1" class="form-label">Select Staff 1</label>
-                                            <select id="staff1F" name="staff1" class="form-select">
-                                                <option value="">Select Staff 1</option>
-                                                <option value="staff1_id">Staff Member 1</option>
-                                                <option value="staff2_id">Staff Member 2</option>
-                                                <option value="staff3_id">Staff Member 3</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-3" id="staffSelectionGroup2">
-                                            <label for="staff2" class="form-label">Select Staff 2</label>
-                                            <select id="staff2F" name="staff2" class="form-select">
-                                                <option value="">Select Staff 2</option>
-                                                <option value="staff1_id">Staff Member 1</option>
-                                                <option value="staff2_id">Staff Member 2</option>
-                                                <option value="staff3_id">Staff Member 3</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-3" id="staffSelectionGroup3">
-                                            <label for="staff3" class="form-label">Select Staff 3</label>
-                                            <select id="staff3F" name="staff3" class="form-select">
-                                                <option value="">Select Staff 3</option>
-                                                <option value="staff1_id">Staff Member 1</option>
-                                                <option value="staff2_id">Staff Member 2</option>
-                                                <option value="staff3_id">Staff Member 3</option>
-                                            </select>
+                                        <div class="row" style="padding-bottom: 20px;">
+                                            <div class="col-6">
+                                                <input type="text" id="mapSearchInput" class="form-control" placeholder="Enter location">
+                                            </div>
+                                            <div class="col-6">
+                                                <button class="btn btn-primary w-100" id="mapSearchButton" type="button">Search</button>
+                                            </div>
                                         </div>
 
+                                        <!-- Map Viewer -->
+                                        <div class="mb-3 map-container" id="mapContainer">
+                                            <div class="mb-3" id="mapGroup">
+                                                <div id="map" style="height: 400px; border: 1px solid #ccc;"></div>
+                                            </div>
+                                        </div>
                                         <!-- Hidden Fields for Latitude and Longitude -->
                                         <input type="hidden" id="latitudeF">
                                         <input type="hidden" id="longitudeF">
+
                                     </div>
 
                                     <!-- Second Column (Image Viewers and Map) -->
                                     <div class="grid-item" id="mediaColumn">
-                                        <!-- Map Viewer -->
-                                        <div class="mb-3 map-container" id="mapContainer">
-                                            <div id="leaflet-mapF" style="height: 300px; border: 1px solid #ccc;"></div>
+
+                                        <button class="btn btn-primary w-100 mb-3" type="button">Select Staff For Fields</button>
+
+                                        <div class="mb-3" id="staffSelectionGroup1">
+                                            <select id="staff1F" name="staff1" class="form-select"></select>
+                                        </div>
+                                        <div class="mb-3" id="staffSelectionGroup2">
+                                            <select id="staff2F" name="staff2" class="form-select"></select>
+                                        </div>
+                                        <div class="mb-3" id="staffSelectionGroup3">
+                                            <select id="staff3F" name="staff3" class="form-select"></select>
                                         </div>
 
                                         <!-- Image Viewers -->
@@ -291,30 +288,18 @@
                                 </div>
 
                                 <!-- Submit Button -->
-                                <button type="submit" class="btn btn-success">Save Field</button>
+                                <div class="d-flex justify-content-center gap-3">
+                                    <button type="button" class="btn btn-success">Save Field</button>
+                                    <button type="button" class="btn btn-success">Update Field</button>
+                                    <button type="button" class="btn btn-success">Clear Field</button>
+                                    <button type="button" class="btn btn-success">Delete Field</button>
+                                </div>
+
                             </form>
 
                         </div>
                     </div>
                 </div>
-
-                <!--<script>
-                    // Function to preview images
-                    function previewImage(inputId, previewId) {
-                        const input = document.getElementById(inputId);
-                        const preview = document.getElementById(previewId);
-                        if (input.files && input.files[0]) {
-                            const reader = new FileReader();
-                            reader.onload = function (e) {
-                                preview.src = e.target.result;
-                            };
-                            reader.readAsDataURL(input.files[0]);
-                        } else {
-                            preview.src = "";
-                        }
-                    }
-                </script>-->
-
             </div>
         </section>
     </section>
@@ -826,6 +811,7 @@
 
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-pMBB0tlkfl4vB+sW+NHqJsyjRuRPlrrnrKHsVro2TACltTYW2o3LIYZR1J7jZ8Pq" crossorigin=""></script>
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js"></script>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.js"></script>
 <script src="assets/lib/jquery-3.7.1.min.js"></script>
@@ -833,67 +819,86 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        let map;
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize the map
+        const map = L.map('map').setView([51.505, -0.09], 13); // Default location (London)
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+
+        // Geocoding API URL (Nominatim in this example)
+        const geocodeApiUrl = 'https://nominatim.openstreetmap.org/search?format=json&q=';
+
+        // Add a marker
         let marker;
 
-        // Initialize Leaflet map
-        function initMap() {
-            // Create the map instance
-            map = L.map('leaflet-map').setView([51.505, -0.09], 13); // Default location (London)
+        // Handle search button click
+        document.getElementById('mapSearchButton').addEventListener('click', async () => {
+            const location = document.getElementById('mapSearchInput').value;
 
-            // Add OpenStreetMap tile layer
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
+            if (location.trim() === '') {
+                alert('Please enter a location');
+                return;
+            }
 
-            // Add a marker at the initial location
-            marker = L.marker([51.505, -0.09]).addTo(map);
+            try {
+                // Fetch geocoding data
+                const response = await fetch(geocodeApiUrl + encodeURIComponent(location));
+                const data = await response.json();
 
-            // Ensure map resizes correctly on initialization
-            map.invalidateSize();
-        }
+                if (data.length > 0) {
+                    const { lat, lon } = data[0]; // Get latitude and longitude
+                    const latitude = parseFloat(lat).toFixed(4);
+                    const longitude = parseFloat(lon).toFixed(4);
 
-        // Handle search button click to find location using Nominatim (OpenStreetMap geocoding)
-        document.getElementById('searchLocationBtn').addEventListener('click', function () {
-            const location = document.getElementById('location').value;
+                    // Update hidden fields
+                    document.getElementById('latitudeF').value = latitude;
+                    document.getElementById('longitudeF').value = longitude;
 
-            // Use Nominatim API to search for the location
-            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.length > 0) {
-                        // If location found, update map view and marker
-                        const lat = parseFloat(data[0].lat);
-                        const lon = parseFloat(data[0].lon);
+                    // Print coordinates in the API format
+                    console.log(`${latitude},${longitude}`);
 
-                        map.setView([lat, lon], 13); // Set map view to the new coordinates
-                        marker.setLatLng([lat, lon]); // Move the marker to the new location
+                    // Center the map on the searched location
+                    map.setView([latitude, longitude], 13);
 
-                        // Log the location coordinates
-                        console.log("Location Coordinates: ", lat, lon);
-
-                        // Optionally, fill latitude and longitude in hidden fields
-                        document.getElementById('latitude').value = lat;
-                        document.getElementById('longitude').value = lon;
-                    } else {
-                        alert('Location not found!');
+                    // Place a marker
+                    if (marker) {
+                        map.removeLayer(marker);
                     }
-                })
-                .catch(error => console.error('Error:', error));
-        });
-
-        // Initialize the map on page load
-        initMap();
-
-        // Ensure map resizes when the window size changes
-        window.addEventListener('resize', function () {
-            if (map) {
-                map.invalidateSize();
+                    marker = L.marker([latitude, longitude]).addTo(map).bindPopup('Searched Location').openPopup();
+                } else {
+                    alert('Location not found. Please try a different search term.');
+                }
+            } catch (error) {
+                console.error('Error fetching geocode data:', error);
+                alert('An error occurred while searching for the location.');
             }
         });
     });
 </script>
+<script>
+    function previewImage(inputId, previewId) {
+        const inputElement = document.getElementById(inputId + 'F');
+        const previewElement = document.getElementById(previewId);
+
+        if (inputElement.files && inputElement.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                previewElement.src = e.target.result; // Set the image source to the file's data
+            };
+
+            reader.readAsDataURL(inputElement.files[0]); // Read the selected file
+        } else {
+            previewElement.src = ''; // Clear the preview if no file is selected
+        }
+    }
+</script>
+
+
+
 <!--<script>
     $(document).ready(function () {
         // Initial setup: show only the dashboard, hide all other sections
