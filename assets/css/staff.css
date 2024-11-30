@@ -93,7 +93,6 @@
 /* Main Dashboard */
 .main-dashboardStaff {
     width: 80%;
-    background-color: bisque;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -139,7 +138,6 @@ h1 {
 
 /* Content Staff Styling */
 #contentStaff {
-    background-color: #4caf50;
     flex: 1;
     border-radius: 10px;
     margin-top: 20px;
@@ -355,3 +353,147 @@ h1 {
     margin-left: 200px;
 }
 
+
+
+
+
+
+
+
+
+
+/* Main Container */
+.container {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+/* Flex Row Layout for Two Columns */
+.row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Large Card (Form) Section */
+.card.large-card {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.card-header {
+    background-color: #f7f7f7;
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.card-header h3 {
+    margin: 0;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.staff-form {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Make sure the form fields wrap on smaller screens */
+}
+
+.form-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-column label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.form-column input, .form-column select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Card Footer */
+.card-footer {
+    padding: 1rem;
+    text-align: center;
+    background-color: #f7f7f7;
+    border-top: 1px solid #ccc;
+}
+
+.button-containerStaff {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.action-btnStaff {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-btnStaff {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.delete-btnStaff {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+.update-btnStaff {
+    background-color: #008CBA; /* Blue */
+    color: white;
+}
+
+.action-btnStaff:hover {
+    opacity: 0.8;
+}
+
+/* Flexbox for 2 Columns (Staff Form + Additional Cards) */
+.col-lg-6 {
+    flex: 1;
+    max-width: 50%; /* Each column will take up 50% of the container */
+}
+
+/* Additional Cards */
+.card {
+    width: 100%;
+    margin-bottom: 1rem; /* Ensure space between cards */
+}
+
+.card-header h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+/* Ensure 2-column layout works responsively */
+@media (max-width: 768px) {
+    .col-lg-6 {
+        flex: 1 1 100%; /* On smaller screens, both columns take up full width */
+    }
+    .staff-form {
+        gap: 1rem;
+    }
+}
