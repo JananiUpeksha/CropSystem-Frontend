@@ -614,9 +614,6 @@
                                             <div class="input-group">
                                                 <select id="cropId" class="form-select">
                                                     <option value="">Select Crop</option>
-                                                    <option value="crop1">Crop 1</option>
-                                                    <option value="crop2">Crop 2</option>
-                                                    <option value="crop3">Crop 3</option>
                                                 </select>
                                                 <button type="button" class="btn btn-primary" id="searchCropIdBtn">
                                                     Search
@@ -626,20 +623,41 @@
 
                                         <!-- Form Fields -->
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" placeholder="Scientific Name">
+                                            <input type="text" class="form-control" id="scientificName" placeholder="Scientific Name">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" placeholder="Common Name">
+                                            <input type="text" class="form-control" id="commonName" placeholder="Common Name">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="number" class="form-control" placeholder="Category">
+                                            <input type="text" class="form-control" id="category" placeholder="Category">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" placeholder="Season">
+                                            <input type="text" class="form-control" id="season" placeholder="Season">
                                         </div>
+
+                                        <!-- Input field for fieldId -->
+                                        <div class="mb-3">
+                                            <input type="text" id="fieldIdForCrop" class="form-control" placeholder="Enter Field ID">
+                                        </div>
+
+                                        <!-- Image Upload Section -->
                                         <div class="mb-3">
                                             <label for="cropImage" class="form-label">Upload Image</label>
                                             <input type="file" id="cropImage" accept="image/*" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="imagePreview" class="form-label">Crop Image</label>
+                                            <img id="imagePreview" src="" alt="Crop Image Preview" class="img-fluid" style="max-width: 100px;">
+                                        </div>
+
+
+
+                                        <!-- CRUD Buttons -->
+                                        <div class="d-flex justify-content-center mt-3">
+                                            <button type="button" class="btn btn-success mx-2" id="createBtn">Create</button>
+                                            <button type="button" class="btn btn-primary mx-2" id="readBtn">Read</button>
+                                            <button type="button" class="btn btn-warning mx-2" id="updateBtn">Update</button>
+                                            <button type="button" class="btn btn-danger mx-2" id="deleteBtn">Delete</button>
                                         </div>
 
                                     </form>
@@ -657,16 +675,6 @@
                                     </div>
                                     <div class="card-body">
                                         <p>Use this space to display crop-related statistics or analytics.</p>
-                                    </div>
-                                </div>
-
-                                <!-- Card 2 -->
-                                <div class="card">
-                                    <div class="card-header bg-warning text-white">
-                                        <h5>Recent Activity</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <p>Show recent updates, logs, or notifications related to crops here.</p>
                                     </div>
                                 </div>
                             </div>
@@ -907,6 +915,7 @@
         }
     }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script type="module" src="assets/js/Script.js"></script>
 <script type="module" src="assets/js/Login.js"></script>
@@ -915,6 +924,10 @@
 <script type="module" src="assets/js/Vehicle.js"></script>
 <script type="module" src="assets/js/Field.js"></script>
 <script type="module" src="assets/js/Staff.js"></script>
+<!--<script type="module" src="assets/js/test.js"></script>-->
+<script type="module" src="assets/js/crop.js"></script>
+<script type="module" src="assets/js/crop1.js"></script>
+
 
 
 </body>
