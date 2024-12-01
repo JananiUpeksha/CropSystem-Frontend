@@ -598,89 +598,99 @@
                     <i class="fas fa-plus" style="margin-left: 5px;"></i>
                 </label>
             </header>
-                <div id="contentCrop" class="container mt-3">
-                    <div class="row">
-                        <!-- Form Card (Left) -->
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-header bg-success text-white">
-                                    <h4>Crop Management</h4>
-                                </div>
-                                <div class="card-body">
-                                    <form>
-                                        <!-- Crop ID Dropdown and Search -->
-                                        <div class="mb-3">
-                                            <label for="cropId" class="form-label">Select Crop ID</label>
-                                            <div class="input-group">
-                                                <select id="cropId" class="form-select">
-                                                    <option value="">Select Crop</option>
-                                                </select>
-                                                <button type="button" class="btn btn-primary" id="searchCropIdBtn">
-                                                    Search
-                                                </button>
+            <div id="contentCrop" class="container mt-3">
+                <div class="row">
+                    <!-- Form Card (Full width) -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-success text-white">
+                                <h4>Crop Management</h4>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <!-- First Row -->
+                                    <div class="row mb-3">
+                                        <!-- 1st Column: Crop ID Dropdown and Search Button (half by half) -->
+                                        <div class="col-md-3">
+                                            <div class="d-flex">
+                                                <!-- Crop ID Dropdown -->
+                                                <div class="flex-grow-1">
+                                                    <select id="cropId" class="form-select">
+                                                        <option value="">Select Crop</option>
+                                                    </select>
+                                                </div>
+                                                <!-- Search Button -->
+                                                <div class="ml-2">
+                                                    <button type="button" class="btn btn-primary w-100" id="searchCropIdBtn">
+                                                        Search
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <!-- Form Fields -->
-                                        <div class="mb-3">
+                                        <!-- 2nd Column: Scientific Name -->
+                                        <div class="col-md-3">
                                             <input type="text" class="form-control" id="scientificName" placeholder="Scientific Name">
                                         </div>
-                                        <div class="mb-3">
+
+                                        <!-- 3rd Column: Common Name -->
+                                        <div class="col-md-3">
                                             <input type="text" class="form-control" id="commonName" placeholder="Common Name">
                                         </div>
-                                        <div class="mb-3">
+                                    </div>
+
+                                    <!-- Second Row -->
+                                    <div class="row mb-3">
+                                        <!-- 1st Column: Category -->
+                                        <div class="col-md-3">
                                             <input type="text" class="form-control" id="category" placeholder="Category">
                                         </div>
-                                        <div class="mb-3">
+
+                                        <!-- 2nd Column: Season -->
+                                        <div class="col-md-3">
                                             <input type="text" class="form-control" id="season" placeholder="Season">
                                         </div>
 
-                                        <!-- Input field for fieldId -->
-                                        <div class="mb-3">
+                                        <!-- 3rd Column: Field ID -->
+                                        <div class="col-md-3">
                                             <input type="text" id="fieldIdForCrop" class="form-control" placeholder="Enter Field ID">
                                         </div>
+                                    </div>
 
-                                        <!-- Image Upload Section -->
-                                        <div class="mb-3">
-                                            <label for="cropImage" class="form-label">Upload Image</label>
+                                    <!-- Third Row -->
+                                    <div class="row mb-3">
+                                        <!-- 1st Column: Image Uploader -->
+                                        <div class="col-md-4">
                                             <input type="file" id="cropImage" accept="image/*" class="form-control">
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="imagePreview" class="form-label">Crop Image</label>
-                                            <img id="imagePreview" src="" alt="Crop Image Preview" class="img-fluid" style="max-width: 100px;">
-                                        </div>
-
-
-
-                                        <!-- CRUD Buttons -->
-                                        <div class="d-flex justify-content-center mt-3">
-                                            <button type="button" class="btn btn-success mx-2" id="createBtn">Create</button>
-                                            <button type="button" class="btn btn-primary mx-2" id="readBtn">Read</button>
-                                            <button type="button" class="btn btn-warning mx-2" id="updateBtn">Update</button>
-                                            <button type="button" class="btn btn-danger mx-2" id="deleteBtn">Delete</button>
-                                        </div>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Additional Cards (Right) -->
-                        <div class="col-md-6">
-                            <div class="d-grid gap-3">
-                                <!-- Card 1 -->
-                                <div class="card">
-                                    <div class="card-header bg-info text-white">
-                                        <h5>Crop Statistics</h5>
                                     </div>
-                                    <div class="card-body">
-                                        <p>Use this space to display crop-related statistics or analytics.</p>
+
+                                    <div class="row mb-3">
+                                        <!-- 2nd Column: Image Preview -->
+                                        <div class="col-md-12 d-flex justify-content-center align-items-center" style="height: 450px;">
+                                            <img id="imagePreview" src="assets/img/c1.jpg" alt="Crop Image Preview" class="img-fluid"
+                                                 style="object-fit: cover; width: 100%; height: 100%;">
+                                        </div>
                                     </div>
-                                </div>
+
+
+                                    <!-- CRUD Buttons -->
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <button type="button" class="btn btn-success mx-2" id="createBtn">Save</button>
+                                        <button type="button" class="btn btn-primary mx-2" id="clearBtn">Clear</button>
+                                        <button type="button" class="btn btn-warning mx-2" id="updateBtn">Update</button>
+                                        <button type="button" class="btn btn-danger mx-2" id="deleteBtn">Delete</button>
+                                    </div>
+                                </form>
+
+
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
+
+
         </div>
     </section>
 </section>
@@ -926,7 +936,6 @@
 <script type="module" src="assets/js/Staff.js"></script>
 <!--<script type="module" src="assets/js/test.js"></script>-->
 <script type="module" src="assets/js/crop.js"></script>
-<script type="module" src="assets/js/crop1.js"></script>
 
 
 
