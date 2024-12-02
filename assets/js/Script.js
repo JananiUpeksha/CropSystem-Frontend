@@ -7,7 +7,7 @@
             '#equipmentMainSection',
             '#fieldMainSection',
             '#cropMainSection',
-            '#logSection',
+            '#logsMainSection',
             '#newAccountMain', // Adding newAccountMain to hide
             '#loginMain'       // Adding loginMain to hide
         ];
@@ -26,7 +26,7 @@
     $('#navEquipment1').on('click', () => showSection('#equipmentMainSection'));
     $('#navField1').on('click', () => showSection('#fieldMainSection'));
     $('#navCrops1').on('click', () => showSection('#cropMainSection'));
-    $('#navLogs1').on('click', () => showSection('#logSection'));
+    $('#navLogs1').on('click', () => showSection('#logsMainSection'));
 
     // Event listeners for Sidebar 2
     $('#navDashboard2').on('click', () => showSection('#mainDashboard'));
@@ -35,7 +35,7 @@
     $('#navEquipment2').on('click', () => showSection('#equipmentMainSection'));
     $('#navField2').on('click', () => showSection('#fieldMainSection'));
     $('#navCrops2').on('click', () => showSection('#cropMainSection'));
-    $('#navLogs2').on('click', () => showSection('#logSection'));
+    $('#navLogs2').on('click', () => showSection('#logsMainSection'));
 
     // Event listeners for Sidebar 3
     $('#navDashboard3').on('click', () => showSection('#mainDashboard'));
@@ -44,7 +44,7 @@
     $('#navEquipment3').on('click', () => showSection('#equipmentMainSection'));
     $('#navField3').on('click', () => showSection('#fieldMainSection'));
     $('#navCrops3').on('click', () => showSection('#cropMainSection'));
-    $('#navLogs3').on('click', () => showSection('#logSection'));
+    $('#navLogs3').on('click', () => showSection('#logsMainSection'));
 
     // Event listeners for Sidebar 4
     $('#navDashboard4').on('click', () => showSection('#mainDashboard'));
@@ -53,7 +53,7 @@
     $('#navEquipment4').on('click', () => showSection('#equipmentMainSection'));
     $('#navField4').on('click', () => showSection('#fieldMainSection'));
     $('#navCrops4').on('click', () => showSection('#cropMainSection'));
-    $('#navLogs4').on('click', () => showSection('#logSection'));
+    $('#navLogs4').on('click', () => showSection('#logsMainSection'));
 
     // Event listeners for Sidebar 5
     $('#navDashboard5').on('click', () => showSection('#mainDashboard'));
@@ -62,7 +62,7 @@
     $('#navEquipment5').on('click', () => showSection('#equipmentMainSection'));
     $('#navField5').on('click', () => showSection('#fieldMainSection'));
     $('#navCrops5').on('click', () => showSection('#cropMainSection'));
-    $('#navLogs5').on('click', () => showSection('#logSection'));
+    $('#navLogs5').on('click', () => showSection('#logsMainSection'));
 
     // Event listeners for Sidebar 6
     $('#navDashboard6').on('click', () => showSection('#mainDashboard'));
@@ -71,7 +71,16 @@
     $('#navEquipment6').on('click', () => showSection('#equipmentMainSection'));
     $('#navField6').on('click', () => showSection('#fieldMainSection'));
     $('#navCrops6').on('click', () => showSection('#cropMainSection'));
-    $('#navLogs6').on('click', () => showSection('#logSection'));
+    $('#navLogs6').on('click', () => showSection('#logsMainSection'));
+
+     // Event listeners for Sidebar 6
+     $('#navDashboard7').on('click', () => showSection('#mainDashboard'));
+     $('#navVehicle7').on('click', () => showSection('#vehicleMainSection'));
+     $('#navStaff7').on('click', () => showSection('#staffMainSection'));
+     $('#navEquipment7').on('click', () => showSection('#equipmentMainSection'));
+     $('#navField7').on('click', () => showSection('#fieldMainSection'));
+     $('#navCrops7').on('click', () => showSection('#cropMainSection'));
+     $('#navLogs7').on('click', () => showSection('#logsMainSection'));
 
     // Initial setup: show only the dashboard and hide login and new account sections
     showSection('#loginMain');

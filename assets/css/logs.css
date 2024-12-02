@@ -1,0 +1,138 @@
+/* Main Staff Section */
+#logsSection,#logsMainSection {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+}
+
+/* Sidebar Styling */
+.sidebarLogs {
+    background-image: url('../img/c6.jpg');
+    background-size: cover;
+    color: white;
+    width: 20%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.sidebarLogs  h3, .sidebarLogs  p, .nav-menuLogs li {
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+}
+
+.nav-menuLogs {
+    padding-top: 30px;
+}
+
+.nav-menuLogs ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.nav-menuLogs li {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    color: #ffffffb3;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background 0.3s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.nav-menuLogs li:hover {
+    background-color: #6b9997;
+    color: white;
+}
+
+.nav-menuLogs li i {
+    margin-right: 10px;
+    font-size: 1.2em;
+    filter: brightness(1.5);
+}
+
+.nav-menuLogs li:hover i {
+    filter: brightness(1.8);
+}
+
+/* Logout Button */
+.logoutLogs {
+    margin-top: auto;
+    margin-bottom: 30px;
+    padding: 10px 20px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.logoutLogs i {
+    margin-right: 8px;
+}
+
+.logoutLogs:hover {
+    background-color: #ff5a5a;
+}
+
+/* Main Dashboard */
+.main-dashboardLogs {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Search Bar */
+.search-containerLogs {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.search-barLogs {
+    padding: 10px 20px 10px 40px;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+    width: 300px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.search-iconLogs {
+    position: absolute;
+    left: 10px;
+    font-size: 1em;
+    color: #888;
+}
+
