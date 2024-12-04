@@ -80,7 +80,7 @@ $(document).ready(function () {
     loadFieldIds();
 
     // Handle the field save button click
-    /*$('#fieldSave').click(function () {
+    $('#fieldSave').click(function () {
         console.log("[DEBUG] Field save button clicked...");
 
         // Step 1: Collect and log input values
@@ -104,11 +104,11 @@ $(document).ready(function () {
             longitude
         });
 
-        /!*!// Step 2: Validate required fields
-        if (!fieldId || !fieldName || !fieldSize || !latitude || !longitude) {
-            alert("Please fill in all required fields.");
-            return; // Stop further execution
-        }*!/
+        /* // Step 2: Validate required fields
+         if (!fieldId || !fieldName || !fieldSize || !latitude || !longitude) {
+             alert("Please fill in all required fields.");
+             return; // Stop further execution
+         }*/
 
         // Step 3: Format and log staff IDs
         var staffIds = [staff1, staff2, staff3].filter(id => id);
@@ -120,9 +120,9 @@ $(document).ready(function () {
 
         // Step 5: Create FormData and log it
         var formData = new FormData();
-        formData.append("fieldId", fieldId);
-        formData.append("fieldName", fieldName);
-        formData.append("fieldSize", fieldSize);
+        /*formData.append("fieldId", fieldId);*/
+        formData.append("name", fieldName);
+        formData.append("size", fieldSize);
         formData.append("staffIds", staffIds.join(',')); // Send staff IDs as a comma-separated string
         formData.append("location", location); // Send location as a string
 
@@ -146,7 +146,7 @@ $(document).ready(function () {
             headers: {
                 "Authorization": "Bearer " + getJwtToken()
             },
-            xhrFields: { withCredentials: true },
+            xhrFields: {withCredentials: true},
             data: formData,
             processData: false,
             contentType: false,
@@ -168,69 +168,7 @@ $(document).ready(function () {
 
                 alert("Failed to save field. Backend Response: " + xhr.responseText);
             }
-        });*/
-
-// Handle the field save button click
-    $('#fieldSave').click(function () {
-        console.log("[DEBUG] Field save button clicked...");
-
-        // Step 1: Collect and log input values (only name and size)
-        var fieldName = $('#fieldNameF').val();
-        var fieldSize = $('#fieldSizeF').val();
-
-        console.log("[DEBUG] Captured input values:", {
-            fieldName,
-            fieldSize
-        });
-
-        // Step 2: Validate required fields (optional validation for now)
-        if (!fieldName || !fieldSize) {
-            alert("Please fill in all required fields.");
-            return; // Stop further execution
-        }
-
-        // Step 3: Create FormData and log it
-        var formData = new FormData();
-        formData.append("fieldName", fieldName);
-        formData.append("fieldSize", fieldSize);
-
-        console.log("[DEBUG] Form data:", formData);
-
-        // Step 4: Send data via AJAX
-        $.ajax({
-            url: 'http://localhost:5050/cropMng/api/v1/field',
-            type: 'POST',
-            headers: {
-                "Authorization": "Bearer " + getJwtToken()
-            },
-            xhrFields: { withCredentials: true },
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-                console.log("[DEBUG] Field saved successfully:", response);
-                alert("Field saved successfully!");
-                $('#fieldForm')[0].reset();  // Reset the form after successful save
-            },
-            error: function (xhr, status, error) {
-                console.error("[DEBUG] Error saving field:", {
-                    status,
-                    error,
-                    response: xhr.responseText,
-                    requestHeaders: xhr.getAllResponseHeaders(),
-                    responseHeaders: xhr.getResponseHeader("all")
-                });
-
-                alert("Failed to save field. Backend Response: " + xhr.responseText);
-            }
-        });
-
-
-
-    // Bind the searchFieldData function to the "Search" button
-        $('#searchFieldIdBtn').click(function () {
-            console.log("[DEBUG] Search button clicked...");
-            searchFieldData();
         });
     });
+
 });

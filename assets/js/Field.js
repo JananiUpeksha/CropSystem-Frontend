@@ -74,7 +74,6 @@ $(document).ready(function () {
         });
     }
     loadFieldIds();
-// Example function to fetch field data (including images)
     function searchFieldData() {
         const fieldId = $('#fieldId').val();
 
@@ -96,62 +95,52 @@ $(document).ready(function () {
                 $('#fieldIdF').val(data.fieldId);
                 $('#fieldSizeF').val(data.size);
 
-                // Set map location input fields
-                if (data.location && data.location.x && data.location.y) {
-                    $('#mapSearchInput').val(`${data.location.x}, ${data.location.y}`);
-                    $('#latitudeF').val(data.location.x);  // Assuming 'x' is latitude
-                    $('#longitudeF').val(data.location.y); // Assuming 'y' is longitude
+                if (data.location) {
+                    $('#mapSearchInput').val(data.location); // Populate raw location string
+                    const locationParts = data.location.split(','); // Split into latitude and longitude
+                    if (locationParts.length === 2) {
+                        $('#latitudeF').val(locationParts[0] ? locationParts[0].trim() : '');   // Set latitude
+                        $('#longitudeF').val(locationParts[1] ? locationParts[1].trim() : '');  // Set longitude
+                    } else {
+                        // Handle case where the location is not in the expected format
+                        $('#latitudeF').val('');
+                        $('#longitudeF').val('');
+                    }
                 } else {
                     $('#mapSearchInput').val('Location not available');
                     $('#latitudeF').val('');
                     $('#longitudeF').val('');
                 }
 
-                // Populate staff dropdowns (assuming data.staff is an array)
-                $('#staff1F').empty().append('<option value="">Select Staff 1</option>');
-
-               // Check if data.staff is defined and is an array
-                if (Array.isArray(data.staff)) {
-                    data.staff.slice(0, 2).forEach(function (staff) {
-                        $('#staff1F').append(`<option value="${staff.id}">${staff.name}</option>`);
-                    });
-
-                    // Show staff dropdown 3 only if there are 3 staff IDs
-                    if (data.staff.length >= 3) {
-                        $('#staffSelectionGroup3').show();
-                        $('#staff3F').empty().append('<option value="">Select Staff 3</option>');
-                        $('#staff3F').append(`<option value="${data.staff[2].id}">${data.staff[2].name}</option>`);
-                    } else {
-                        $('#staffSelectionGroup3').hide();
-                    }
+                // Check if staffIds exists and is an array
+                if (Array.isArray(data.staffIds)) {
+                    console.log("Staff IDs: ", data.staffIds); // Log staffIds for debugging
+                    $('#staffIdsField').val(data.staffIds.join(', ')); // Convert array to comma-separated string
                 } else {
-                    console.error("data.staff is not an array or is undefined");
-                    // Handle the case where staff data is not available
-                    $('#staffSelectionGroup3').hide();
+                    $('#staffIdsField').val(''); // Clear the field if no staff IDs are available
                 }
 
-
+                // Populate image previews
                 if (data.image1) {
-                    console.log("Image 1 Base64 data:", data.image1);  // Log Base64 data for debugging
-                    let imageType1 = data.image1.startsWith('iVBOR') ? 'png' : 'jpeg'; // Check if base64 string starts with PNG header or JPG header
-                    $("#image1Preview").attr("src", "data:image/" + imageType1 + ";base64," + data.image1); // Dynamically set image type
+                    let imageType1 = data.image1.startsWith('iVBOR') ? 'png' : 'jpeg'; // Detect image type
+                    $("#image1Preview").attr("src", "data:image/" + imageType1 + ";base64," + data.image1);
                 }
 
                 if (data.image2) {
-                    console.log("Image 2 Base64 data:", data.image2);  // Log Base64 data for debugging
-                    let imageType2 = data.image2.startsWith('iVBOR') ? 'png' : 'jpeg'; // Check if base64 string starts with PNG header or JPG header
-                    $("#image2Preview").attr("src", "data:image/" + imageType2 + ";base64," + data.image2); // Dynamically set image type
+                    let imageType2 = data.image2.startsWith('iVBOR') ? 'png' : 'jpeg'; // Detect image type
+                    $("#image2Preview").attr("src", "data:image/" + imageType2 + ";base64," + data.image2);
                 }
-
             },
             error: function (xhr, status, error) {
                 console.error('Error fetching field data:', error);
             }
         });
     }
+
+
+
 // Bind the searchFieldData function to the "Search" button
     $('#searchFieldIdBtn').click(function () {
         searchFieldData();
     });
-
 });
