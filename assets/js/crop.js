@@ -7,7 +7,6 @@ $(document).ready(function () {
     $("#createBtn").on("click", function () {
         console.log("Create button clicked");
 
-        // Get form data
         const commonName = $("#commonName").val();
         const specificName = $("#scientificName").val();
         const category = $("#category").val();
@@ -15,25 +14,22 @@ $(document).ready(function () {
         const cropImage = $("#cropImage")[0].files[0]; // Get the uploaded file
         const fieldId = $("#fieldIdForCrop").val();
 
-        // Prepare FormData for file upload
         const formData = new FormData();
         formData.append("commonName", commonName);
         formData.append("specificName", specificName);
         formData.append("category", category);
         formData.append("season", season);
         if (cropImage) {
-            formData.append("image1", cropImage); // Append the file directly
+            formData.append("image1", cropImage);
         }
         if (fieldId) {
-            formData.append("fieldId", fieldId); // Attach fieldId if entered
+            formData.append("fieldId", fieldId);
         }
 
-        // Debugging: Log FormData entries to verify correct data
         for (let pair of formData.entries()) {
             console.log(pair[0] + ', ' + pair[1]);
         }
 
-        // Send data via AJAX
         const jwtToken = localStorage.getItem('jwtToken');
         if (!jwtToken) {
             alert("You need to log in first.");
@@ -61,13 +57,13 @@ $(document).ready(function () {
     });
 
     $.ajax({
-        url: "http://localhost:5050/cropMng/api/v1/crops", // API endpoint to fetch crops
+        url: "http://localhost:5050/cropMng/api/v1/crops",
         method: "GET",
         headers: {
-            "Authorization": "Bearer " + jwtToken // Add JWT to the Authorization header
+            "Authorization": "Bearer " + jwtToken
         },
         success: function (response) {
-            console.log("Crops fetched successfully:", response); // Log the response
+            console.log("Crops fetched successfully:", response);
 
             const cropIdDropdown = $("#cropId");
             if (cropIdDropdown.length === 0) {
@@ -75,12 +71,10 @@ $(document).ready(function () {
                 return;
             }
 
-            cropIdDropdown.empty(); // Clear existing options
-            cropIdDropdown.append('<option value="">Select Crop</option>'); // Default option
+            cropIdDropdown.empty();
+            cropIdDropdown.append('<option value="">Select Crop</option>');
 
-            // Iterate over the crops data and append cropId as options
             response.forEach(function (crop) {
-                // Ensure the crop object contains cropId before appending it
                 if (crop.cropId) {
                     cropIdDropdown.append(`<option value="${crop.cropId}">${crop.cropId}</option>`);
                 } else {
@@ -91,38 +85,33 @@ $(document).ready(function () {
             console.log("Dropdown populated successfully.");
         },
         error: function (xhr, status, error) {
-            console.error("Error fetching crops:", xhr.responseText); // Log error details
+            console.error("Error fetching crops:", xhr.responseText);
             alert("Failed to fetch crop data.");
         }
     });
 
-        // Search button click event
         $("#searchCropIdBtn").on("click", function () {
-            const cropId = $("#cropId").val(); // Get selected cropId
+            const cropId = $("#cropId").val();
 
             if (!cropId) {
                 alert("Please select a crop first.");
                 return;
             }
 
-            // Fetch crop data based on selected cropId
             $.ajax({
-                url: `http://localhost:5050/cropMng/api/v1/crops/${cropId}`, // API endpoint to fetch crop details
+                url: `http://localhost:5050/cropMng/api/v1/crops/${cropId}`,
                 method: "GET",
                 headers: {
-                    "Authorization": "Bearer " + jwtToken // Add JWT to the Authorization header
+                    "Authorization": "Bearer " + jwtToken
                 },
                 success: function (response) {
-                    console.log("Crop data fetched successfully:", response); // Log the response
-
-                    // Populate form fields with the fetched crop data
+                    console.log("Crop data fetched successfully:", response);
                     $("#scientificName").val(response.specificName);
                     $("#commonName").val(response.commonName);
                     $("#category").val(response.category);
                     $("#season").val(response.season);
                     $("#fieldIdForCrop").val(response.fieldId);
 
-                    // Set the image preview
                     if (response.image1) {
                         $("#imagePreview").attr("src", "data:image/png;base64," + response.image1); // Assuming image1 is in base64
                     }
@@ -137,8 +126,6 @@ $(document).ready(function () {
         });
     $("#updateBtn").on("click", function () {
         console.log("Update button clicked");
-
-        // Get form data
         const cropId = $("#cropId").val();
         const commonName = $("#commonName").val();
         const specificName = $("#scientificName").val();
@@ -152,28 +139,27 @@ $(document).ready(function () {
             return;
         }
 
-        // Prepare FormData for file upload
         const formData = new FormData();
         formData.append("commonName", commonName);
         formData.append("specificName", specificName);
         formData.append("category", category);
         formData.append("season", season);
         if (cropImage) {
-            formData.append("image1", cropImage); // Append the file directly
+            formData.append("image1", cropImage);
         }
         if (fieldId) {
-            formData.append("fieldId", fieldId); // Attach fieldId if entered
+            formData.append("fieldId", fieldId);
         }
 
         // Send data via AJAX
         $.ajax({
-            url: `http://localhost:5050/cropMng/api/v1/crops/${cropId}`, // API endpoint to update crop
+            url: `http://localhost:5050/cropMng/api/v1/crops/${cropId}`,
             method: "PUT",
             data: formData,
-            contentType: false, // Important for file uploads
-            processData: false, // Important for file uploads
+            contentType: false,
+            processData: false,
             headers: {
-                "Authorization": "Bearer " + jwtToken // Add JWT to the Authorization header
+                "Authorization": "Bearer " + jwtToken
             },
             success: function (response) {
                 console.log("Crop updated successfully:", response);
@@ -188,26 +174,21 @@ $(document).ready(function () {
 
     $("#deleteBtn").on("click", function () {
         console.log("Delete button clicked");
-
-        // Get the selected cropId
         const cropId = $("#cropId").val();
 
         if (!cropId) {
             alert("Please select a crop to delete.");
             return;
         }
-
-        // Send DELETE request via AJAX
         $.ajax({
-            url: `http://localhost:5050/cropMng/api/v1/crops/${cropId}`, // API endpoint to delete crop
+            url: `http://localhost:5050/cropMng/api/v1/crops/${cropId}`,
             method: "DELETE",
             headers: {
-                "Authorization": "Bearer " + jwtToken // Add JWT to the Authorization header
+                "Authorization": "Bearer " + jwtToken
             },
             success: function (response) {
                 console.log("Crop deleted successfully:", response);
                 alert("Crop deleted successfully!");
-                // Optionally clear the form after deletion
                 clearForm();
             },
             error: function (xhr, status, error) {
@@ -219,23 +200,14 @@ $(document).ready(function () {
 
     $("#clearBtn").on("click", function () {
         console.log("Clear button clicked");
-
-        // Clear the form fields
         $("#commonName").val("");
         $("#scientificName").val("");
         $("#category").val("");
         $("#season").val("");
         $("#fieldIdForCrop").val("");
-        $("#cropId").val(""); // Reset the dropdown selection
-
-        // Reset the image preview
-        $("#imagePreview").attr("src", ""); // Default image or empty state
-
-        console.log("Form cleared.");
+        $("#cropId").val("");
+        $("#imagePreview").attr("src", "");
     });
-
-
-
 });
 
 

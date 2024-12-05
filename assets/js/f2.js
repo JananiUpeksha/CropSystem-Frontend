@@ -31,12 +31,6 @@ $(document).ready(function () {
             longitude
         });
 
-        // Validate that the required fields are filled
-        if (!fieldId || !fieldName || !fieldSize || !latitude || !longitude) {
-            alert("Please fill in all required fields.");
-            return; // Stop further execution if fields are not valid
-        }
-
         // Format staff IDs and location
         const staffIds = [staff1, staff2, staff3].filter(id => id); // Remove empty staff IDs
         const location = `${latitude},${longitude}`;

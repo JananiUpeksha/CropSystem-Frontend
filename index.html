@@ -148,7 +148,91 @@
                     <input type="text" class="search-bar" placeholder="Search...">
                 </div>
             </header>
-            <div id="content"></div>
+            <div id="content" class="container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6" >
+                            <div class="analytics-card">
+                                <div class="cardA-header">
+                                    <h5>Analytics Overview</h5>
+                                </div>
+                                <div class="card-body">
+                                    <!-- Line Chart Canvas -->
+                                    <canvas id="lineChart" width="400" height="200"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-5" >
+                            <div class="banner">
+                                <div class="banner-content">
+                                    <h2>Latest Crop Trends</h2>
+                                    <p>Stay ahead with the latest trends in crop management, including innovations, technologies, and best practices for improved yields.</p>
+
+                                    <!-- Data Section -->
+                                    <div class="data-section">
+                                        <h3>Current Crop Insights</h3>
+                                        <ul>
+                                            <li><strong>Top Growing Crops:</strong> Wheat, Rice, Corn</li>
+                                            <li><strong>Yield Increase:</strong> 12% year-over-year</li>
+                                            <li><strong>Market Demand:</strong> High for organic crops, especially tomatoes and strawberries</li>
+                                            <li><strong>Technologies:</strong> Precision farming, AI-powered analytics</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-6" >
+                            <div class="slider-container">
+                                <div class="slider-images">
+                                    <img src="assets/img/c2.jpg" alt="Image 1" class="slider-image">
+                                    <img src="image2.jpg" alt="Image 2" class="slider-image">
+                                    <img src="image3.jpg" alt="Image 3" class="slider-image">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-5" style="background-color: lightyellow; padding: 20px;">
+                            <!-- Staff ID Card -->
+                            <div class="card" style="width: 100%; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                                <!-- Company Name at the Top -->
+                                <div class="card-header" style="background-color: #007bff; color: white; padding: 10px; text-align: center;">
+                                    <h4 style="margin: 0; font-size: 18px; font-weight: bold;">Company Name</h4>
+                                </div>
+
+                                <div class="card-body" style="padding: 0; display: flex; flex-direction: column; align-items: center; background-color: #f5f5f5;">
+                                    <!-- User Image (Centered) -->
+                                    <div class="profile-image" style="width: 120px; height: 120px; margin-top: 20px; border-radius: 50%; overflow: hidden; background-color: #ddd;">
+                                        <img src="assets/img/user.jpg" alt="User" style="width: 100%; height: 100%; object-fit: cover;">
+                                    </div>
+
+                                    <!-- User Info -->
+                                    <div class="user-info" style="padding: 15px; text-align: center; width: 100%;">
+                                        <p style="margin: 5px 0; font-size: 14px; color: #888;">Software Developer</p>
+                                        <p style="margin: 5px 0; font-size: 14px; color: #444;">IT Department</p>
+                                        <p style="margin: 10px 0; font-size: 14px; color: #444; font-weight: bold;">Office ID: #12345</p>
+
+                                        <!-- Additional Data -->
+                                        <p style="margin: 5px 0; font-size: 14px; color: #444;">Location: Colombo, Sri Lanka</p>
+                                        <p style="margin: 5px 0; font-size: 14px; color: #444;">Phone: +94 123 456 789</p>
+                                        <p style="margin: 5px 0; font-size: 14px; color: #444;">Email: johndoe@example.com</p>
+                                        <p style="margin: 10px 0; font-size: 14px; color: #444; font-weight: bold;">Join Date: January 2020</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+            </div>
+
+
+
         </div>
     </section>
 </section>
@@ -183,16 +267,11 @@
             <div class="main-dashboardField">
                 <header>
                     <h1 style="padding-top: 20px;">Field Management</h1>
-                    <label for="addModalCheckboxField" class="action-btnField add-btnField">
-                        Add Field Here
-                        <i class="fas fa-tractor" style="margin-left: 8px;"></i>
-                        <i class="fas fa-plus" style="margin-left: 5px;"></i>
-                    </label>
                 </header>
                 <div id="contentFieldField" class="container mt-3" style="max-height: 80vh; overflow-y: auto;">
                     <!-- Bootstrap Card -->
                     <div class="card">
-                        <div class="card-header bg-primary text-white">
+                        <div class="card-header" style="background-color: #28a745; color: white;">
                             <h5 class="text-center">Field Related Information</h5>
                         </div>
 
@@ -210,7 +289,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-4">
-                                                    <button type="button" class="btn btn-primary w-100" id="searchFieldIdBtn">
+                                                    <button type="button" class="btn btn-success w-100" id="searchFieldIdBtn">
                                                         Search
                                                     </button>
                                                 </div>
@@ -233,8 +312,8 @@
                                             <div class="col-6">
                                                 <input type="text" id="mapSearchInput" class="form-control" placeholder="Enter location">
                                             </div>
-                                            <div class="col-6">
-                                                <button class="btn btn-primary w-100" id="mapSearchButton" type="button">Search</button>
+                                            <div class="col-4">
+                                                <button class="btn btn-success w-100" id="mapSearchButton" type="button">Search</button>
                                             </div>
                                         </div>
 
@@ -253,7 +332,7 @@
                                     <!-- Second Column (Image Viewers and Map) -->
                                     <div class="grid-item" id="mediaColumn">
 
-                                        <button class="btn btn-primary w-100 mb-3" type="button">Select Staff For Fields</button>
+                                        <button class="btn btn-success w-100 mb-3" type="button">Select Staff For Fields</button>
 
                                         <div class="mb-3" id="staffSelectionGroup1">
                                             <select id="staff1F" name="staff1" class="form-select"></select>
@@ -292,9 +371,9 @@
                                 <!-- Submit Button -->
                                 <div class="d-flex justify-content-center gap-3">
                                     <button type="button" class="btn btn-success" id="fieldSave">Save Field</button>
-                                    <button type="button" class="btn btn-success" id="fieldUpdate">Update Field</button>
-                                    <button type="button" class="btn btn-success" id="fieldClear">Clear Field</button>
-                                    <button type="button" class="btn btn-success" id="fieldDelete">Delete Field</button>
+                                    <button type="button" class="btn btn-danger" id="fieldUpdate">Update Field</button>
+                                    <button type="button" class="btn btn-warning" id="fieldClear">Clear Field</button>
+                                    <button type="button" class="btn btn-primary" id="fieldDelete">Delete Field</button>
                                 </div>
 
                             </form>
@@ -371,10 +450,10 @@
                 <!-- Action buttons -->
                 <div class="grid-item" style="grid-column: span 3;">
                     <div class="button-container">
-                        <button type="button" id="saveField">Save</button>
-                        <button type="button" id="clearField">Clear</button>
-                        <button type="button" id="updateField">Update</button>
-                        <button type="button" id="deleteField">Delete</button>
+                        <button type="button" class="btn btn-primary" id="saveField">Save</button>
+                        <button type="button" class="btn btn-danger" id="clearField">Clear</button>
+                        <button type="button" class="btn btn-success" id="updateField">Update</button>
+                        <button type="button" class="btn btn-warning" id="deleteField">Delete</button>
                     </div>
                 </div>
             </div>
@@ -593,18 +672,13 @@
         <div class="main-dashboardCrop">
             <header>
                 <h1 style="padding-top: 20px;">Crop Management</h1>
-                <label for="addModalCheckboxCrop" class="action-btnCrop add-btnCrop">
-                    Add Crop Here
-                    <i class="fas fa-seedling" style="margin-left: 8px;"></i>
-                    <i class="fas fa-plus" style="margin-left: 5px;"></i>
-                </label>
             </header>
             <div id="contentCrop" class="container mt-3">
                 <div class="row">
                     <!-- Form Card (Full width) -->
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header bg-success text-white">
+                            <div class="card-header" style="background-color: #28a745; color: white;">
                                 <h4>Crop Management</h4>
                             </div>
                             <div class="card-body">
@@ -622,7 +696,7 @@
                                                 </div>
                                                 <!-- Search Button -->
                                                 <div class="ml-2">
-                                                    <button type="button" class="btn btn-primary w-100" id="searchCropIdBtn">
+                                                    <button type="button" class="btn btn-success w-100" id="searchCropIdBtn">
                                                         Search
                                                     </button>
                                                 </div>
@@ -661,9 +735,16 @@
                                     <!-- Third Row -->
                                     <div class="row mb-3">
                                         <!-- 1st Column: Image Uploader -->
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <input type="file" id="cropImage" accept="image/*" class="form-control">
                                         </div>
+                                        <div class="col-md-3">
+                                            <button id="openFieldModalCrop" class="btn btn-success form-control ps-3" data-bs-toggle="modal" data-bs-target="#fieldModal">
+                                                Select Field
+                                            </button>
+                                        </div>
+
+
                                     </div>
 
                                     <div class="row mb-3">
@@ -744,10 +825,6 @@
         <div class="main-dashboardStaff">
             <header>
                 <h1 style="padding-top: 20px;">Staff Management</h1>
-                <div class="search-containerStaff" style="padding-top: 20px;">
-                    <i class="fas fa-search search-iconStaff"></i>
-                    <input type="text" class="search-barStaff" placeholder="Search...">
-                </div>
             </header>
 
             <div id="contentStaff" class="container">
@@ -755,7 +832,7 @@
                     <!-- First Column: Staff Management Form -->
                     <div class="col-lg-6">
                         <div class="card large-card">
-                            <div class="card-header">
+                            <div class="card-header" style="background-color: #28a745; color: white;">
                                 <h3>Staff Management</h3>
                             </div>
                             <div class="card-body">
@@ -766,7 +843,7 @@
                                         </select>
                                     </div>
                                     <div class="col-3">
-                                        <button type="button" class="btn btn-primary w-100" id="searchStaffIdBtn">Search</button>
+                                        <button type="button" class="btn btn-success w-100" id="searchStaffIdBtn">Search</button>
                                     </div>
                                 </div>
                                 <form id="staffForm" class="staff-form">
@@ -800,37 +877,69 @@
                             </div>
                             <div class="card-footer">
                                 <div class="button-containerStaff">
-                                    <button type="button" class="action-btnStaff delete-btnStaff" id="staffFSave">Save</button>
-                                    <button type="button" class="action-btnStaff update-btnStaff" id="staffFUpdate">Update</button>
-                                    <button type="button" class="action-btnStaff delete-btnStaff" id="staffFDelete">Delete</button>
-                                    <button type="button" class="action-btnStaff update-btnStaff" id="staffFClear">Clear</button>
+                                    <button type="button" class="action-btnStaff delete-btnStaff" id="staffFSave" style="background-color: green; color: white;">Save</button>
+                                    <button type="button" class="action-btnStaff update-btnStaff" id="staffFUpdate" style="background-color: blue; color: white;">Update</button>
+                                    <button type="button" class="action-btnStaff delete-btnStaff" id="staffFDelete" style="background-color: red; color: white;">Delete</button>
+                                    <button type="button" class="action-btnStaff update-btnStaff" id="staffFClear" style="background-color:  #ffc107; color: black;">Clear</button>
+
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Second Column: Additional Details Cards -->
-                    <div class="col-lg-6">
-                        <!-- First Additional Card -->
-                        <div class="card">
-                            <div class="card-header">
-                                <h5>Additional Card 1</h5>
+                    <div class="col-lg-5">
+                        <div class="card mt-3" style="border: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                            <div class="card-header" style="background-color: #28a745; color: white; text-align: center; padding: 20px 0;">
+                                <h3>Important Instructions</h3>
                             </div>
-                            <div class="card-body">
-                                <p>Content for the first additional card.</p>
+                            <div class="card-body" style="background-color: #f8f9fa; padding: 30px; border-radius: 5px;">
+                                <h5 style="font-size: 1.2rem; color: #333;">Please follow these instructions carefully:</h5>
+                                <ul style="list-style-type: none; padding-left: 0; margin-left: 0;">
+                                    <li style="font-size: 1rem; color: #333;"><strong>Step 1:</strong> Ensure all required fields are filled before submitting the form.</li>
+                                    <li style="font-size: 1rem; color: #333;"><strong>Step 2:</strong> Double-check the information entered to avoid mistakes.</li>
+                                    <li style="font-size: 1rem; color: #333;"><strong>Step 3:</strong> If you're unsure about any details, contact support.</li>
+                                    <li style="font-size: 1rem; color: #333;"><strong>Step 4:</strong> After submission, you will receive a confirmation email with the details.</li>
+                                </ul>
+                                <p style="font-size: 0.9rem; color: #6c757d;">For further assistance, please visit our <a href="#" style="color: #007bff;">Help Center</a>.</p>
                             </div>
                         </div>
 
-                        <!-- Second Additional Card -->
                         <div class="card mt-3">
-                            <div class="card-header">
-                                <h5>Additional Card 2</h5>
-                            </div>
                             <div class="card-body">
-                                <p>Content for the second additional card.</p>
+                                <!-- Bootstrap Image Slider -->
+                                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="/assets/img/1.jpeg" class="d-block w-100 img-fluid" alt="Image 1">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/assets/img/1.jpg" class="d-block w-100 img-fluid" alt="Image 2">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/assets/img/c8.jpg" class="d-block w-100 img-fluid" alt="Image 3">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/assets/img/c2.jpg" class="d-block w-100 img-fluid" alt="Image 4">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/assets/img/c3.jpeg" class="d-block w-100 img-fluid" alt="Image 5">
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
+
                     </div>
+
+
+
                 </div>
             </div>
         </div>
@@ -860,10 +969,6 @@
         <div class="main-dashboardLogs">
             <header>
                 <h1 style="padding-top: 20px;">Logs Management</h1>
-                <div class="search-containerLogs" style="padding-top: 20px;">
-                    <i class="fas fa-search search-iconStaff"></i>
-                    <input type="text" class="search-barLogs" placeholder="Search...">
-                </div>
             </header>
 
             <div id="contentLogs" class="container mt-4">
@@ -871,9 +976,10 @@
                     <!-- Left Column: Logs Form -->
                     <div class="col-md-10">
                         <div class="card">
-                            <div class="card-header bg-warning text-white">
-                                Logs Form
+                            <div class="card-header" style="background-color: #28a745; color: white; font-size: 1.5rem; font-weight: bold;">
+                                Logs Information
                             </div>
+
                             <div class="card-body">
                                 <form>
                                     <!-- Row 1 -->
@@ -885,7 +991,7 @@
                                                     <option value="" selected disabled>Select Log ID</option>
                                                     <!-- Dynamic options here -->
                                                 </select>
-                                                <button type="button" class="btn btn-primary" id="searchLogIdBtn">Search</button>
+                                                <button type="button" class="btn btn-success" id="searchLogIdBtn">Search</button>
                                             </div>
                                         </div>
 
@@ -959,7 +1065,7 @@
                                         <!-- Column 2: Field Dropdowns -->
                                         <div class="col-md-4" style="margin-left: 285px;">
                                             <label for="openFieldModal" class="form-label">Assign Field</label>
-                                            <button id="openFieldModal" class="btn btn-primary" style="margin-bottom: 16px; width: 100%;">Select Field</button>
+                                            <button id="openFieldModal" class="btn btn-success" style="margin-bottom: 16px; width: 100%;">Select Field</button>
 
                                             <div style="margin-top: 10px;">
                                                 <input id="logField" class="form-control" placeholder="Assigned Fields" rows="3"
@@ -976,7 +1082,7 @@
                                             <button type="button" class="btn btn-success" id="saveLogBtn">Save</button>
                                             <button type="button" class="btn btn-warning" id="updateLogBtn">Update</button>
                                             <button type="button" class="btn btn-danger" id="deleteLogBtn">Delete</button>
-                                            <button type="button" class="btn btn-danger" id="clearLogBtn">Clear</button>
+                                            <button type="button" class="btn btn-primary" id="clearLogBtn">Clear</button>
                                         </div>
                                     </div>
                                 </form>
@@ -1110,6 +1216,90 @@
             previewElement.src = ''; // Clear the preview if no file is selected
         }
     }
+</script>
+<script>
+    // Data for the chart
+    const chartData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], // Example months, you can replace with actual time periods
+        datasets: [{
+            label: 'Total Users',
+            data: [1200, 1300, 1250, 1400, 1550, 1600], // Example data, replace with actual values
+            borderColor: 'lightcoral',
+            backgroundColor: 'rgba(255, 99, 71, 0.2)',
+            fill: true,
+            tension: 0.4
+        },
+            {
+                label: 'Growth Rate (%)',
+                data: [10, 12, 15, 14, 16, 18], // Example data
+                borderColor: 'lightblue',
+                backgroundColor: 'rgba(173, 216, 230, 0.2)',
+                fill: true,
+                tension: 0.4
+            },
+            {
+                label: 'Revenue ($)',
+                data: [50000, 52000, 53000, 54000, 55000, 56000], // Example data
+                borderColor: 'lightgreen',
+                backgroundColor: 'rgba(144, 238, 144, 0.2)',
+                fill: true,
+                tension: 0.4
+            }]
+    };
+
+    // Create the chart
+    const ctx = document.getElementById('lineChart').getContext('2d');
+    const lineChart = new Chart(ctx, {
+        type: 'line',
+        data: chartData,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Months'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Values'
+                    }
+                }
+            }
+        }
+    });
+
+</script>
+<script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.slider-image');
+    const totalImages = images.length;
+
+    function changeImage() {
+        currentIndex = (currentIndex + 1) % totalImages; // Move to the next image
+        const newTransformValue = -currentIndex * 100; // Move to the next image in the flex container
+        document.querySelector('.slider-images').style.transform = `translateX(${newTransformValue}%)`;
+    }
+
+    // Set an interval to change the image every 3 seconds
+    setInterval(changeImage, 3000);
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
