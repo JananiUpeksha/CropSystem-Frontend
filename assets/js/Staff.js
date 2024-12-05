@@ -1,25 +1,23 @@
 $(document).ready(function () {
     function getJwtToken() {
-        const token = localStorage.getItem('jwtToken'); // Adjust if token is stored elsewhere
-        console.log("Retrieved JWT Token:", token);  // Log the token
+        const token = localStorage.getItem('jwtToken');
+        console.log("Retrieved JWT Token:", token);
         return token;
     }
-
-    // Function to add JWT to the headers of AJAX requests
     function addJwtToHeaders() {
         const token = getJwtToken();
         if (token) {
-            console.log("Adding JWT to headers:", token);  // Log the token being added to the headers
+            console.log("Adding JWT to headers:", token);
             return {
-                "Authorization": "Bearer " + token // Adding the Bearer token in headers
+                "Authorization": "Bearer " + token
             };
         }
-        console.log("No JWT token found.");  // Log if no token is found
-        return {}; // Return empty headers if no token is found
+        console.log("No JWT token found.");
+        return {};
     }
 
     function getRoleFromJwt() {
-        const token = localStorage.getItem('jwtToken'); // Get token from local storage
+        const token = localStorage.getItem('jwtToken');
         if (token) {
             // Split token into three parts (header, payload, signature)
             const payload = token.split('.')[1]; // JWT token is base64 encoded
@@ -37,21 +35,17 @@ $(document).ready(function () {
         return null;
     }
 
-    // Function to populate the staff dropdown by fetching staff data
     function populateStaffDropdown() {
         $.ajax({
-            url: "http://localhost:5050/cropMng/api/v1/staff", // API endpoint for staff
+            url: "http://localhost:5050/cropMng/api/v1/staff",
             method: "GET",
-            headers: addJwtToHeaders(),  // Ensure JWT is added via the header
+            headers: addJwtToHeaders(),
             success: function (data) {
                 console.log("Fetched staff data:", data);
                 const staffIdDropdown = $("#staffId");
                 staffIdDropdown.empty();
-
-                // Add a default option
                 staffIdDropdown.append($("<option>").val("").text("Select Staff"));
 
-                // Populate dropdown with staff options
                 data.forEach(staff => {
                     const option = $("<option>").val(staff.staffId).text(staff.staffId);
                     staffIdDropdown.append(option);
@@ -63,15 +57,14 @@ $(document).ready(function () {
             }
         });
     }
-    // Call the function to populate staff dropdowns
-    populateStaffDropdown(); // For regular dropdown
+
+    populateStaffDropdown();
     function populateStaffForm(staffId) {
         $.ajax({
-            url: "http://localhost:5050/cropMng/api/v1/staff/" + staffId, // Replace with actual endpoint
+            url: "http://localhost:5050/cropMng/api/v1/staff/" + staffId,
             method: "GET",
             headers: addJwtToHeaders(),
             success: function (data) {
-                // Populate form fields with the staff data
                 $("#firstName").val(data.firstName);
                 $("#lastName").val(data.lastName);
                 $("#emailF").val(data.email);
@@ -88,29 +81,23 @@ $(document).ready(function () {
         });
     }
 
-    // Event listener for the Search button
     $("#searchStaffIdBtn").on("click", function () {
-        const staffId = $("#staffId").val(); // Get the selected staff ID
+        const staffId = $("#staffId").val();
         if (staffId) {
-            populateStaffForm(staffId); // Call the function to populate the form with staff data
+            populateStaffForm(staffId);
         } else {
             alert("Please select a Staff ID.");
         }
     });
     $("#staffFSave").click(function () {
-        // Get the role from JWT
         const userRole = getRoleFromJwt();
-
-        // Log the userRole for debugging
         console.log("User Role:", userRole);
 
-        // Check if the role is 'ROLE_MANAGER', and prevent saving if not
         if (userRole !== 'ROLE_MANAGER') {
             alert("You do not have the necessary permissions to save staff data. Required role: ROLE_MANAGER.");
-            return; // Prevent form submission if the role is not 'ROLE_MANAGER'
+            return;
         }
 
-        // Gather form data
         const staffData = {
             firstName: $("#firstName").val(),
             lastName: $("#lastName").val(),
@@ -122,24 +109,21 @@ $(document).ready(function () {
             role: $("#roleF").val()
         };
 
-        // Validate the required fields before making the API call
         if (!staffData.firstName || !staffData.lastName || !staffData.email || !staffData.dob || !staffData.address || !staffData.contact || !staffData.joinDate || !staffData.role) {
             alert("Please fill in all the required fields.");
             return;
         }
 
-        // Send the data to the backend using AJAX
         $.ajax({
-            url: "http://localhost:5050/cropMng/api/v1/staff", // Backend URL
+            url: "http://localhost:5050/cropMng/api/v1/staff",
             method: "POST",
             headers: {
-                "Authorization": "Bearer " + localStorage.getItem('jwtToken'), // Add JWT token for authorization
-                "Content-Type": "application/json" // Specify the content type as JSON
+                "Authorization": "Bearer " + localStorage.getItem('jwtToken'),
+                "Content-Type": "application/json"
             },
-            data: JSON.stringify(staffData), // Convert data to JSON string
+            data: JSON.stringify(staffData),
             success: function (response) {
                 alert("Staff saved successfully!");
-                // Optionally, clear the form fields after successful save
                 $("#staffForm")[0].reset();
             },
             error: function (xhr, status, error) {
@@ -149,26 +133,21 @@ $(document).ready(function () {
         });
     });
 
-    // Update Staff (Update method)
     $("#staffFUpdate").click(function () {
-        // Retrieve the user role from JWT
         const userRole = getRoleFromJwt();
         console.log("User Role:", userRole);
 
-        // Check for role-based authorization (only proceed if role is 'ROLE_MANAGER')
         if (userRole !== 'ROLE_MANAGER') {
             alert("You do not have the necessary permissions to update staff data. Required role: ROLE_MANAGER.");
             return;
         }
 
-        // Get the selected staff ID
         const staffId = $("#staffId").val();
         if (!staffId) {
             alert("Please select a staff ID to update.");
             return;
         }
 
-        // Prepare staff data from the form
         const staffData = {
             firstName: $("#firstName").val(),
             lastName: $("#lastName").val(),
@@ -180,33 +159,27 @@ $(document).ready(function () {
             role: $("#roleF").val()
         };
 
-        // Ensure the staffData object has all required fields
         if (!staffData.firstName || !staffData.lastName || !staffData.email) {
             alert("Please ensure all mandatory fields are filled out.");
             return;
         }
 
-        // Make the AJAX request
         $.ajax({
-            url: "http://localhost:5050/cropMng/api/v1/staff/" + staffId, // API endpoint
-            method: "PUT", // HTTP method for update
+            url: "http://localhost:5050/cropMng/api/v1/staff/" + staffId,
+            method: "PUT",
             headers: {
-                "Authorization": "Bearer " + localStorage.getItem('jwtToken'), // Add JWT token for authorization
-                "Content-Type": "application/json" // Specify the content type as JSON
+                "Authorization": "Bearer " + localStorage.getItem('jwtToken'),
+                "Content-Type": "application/json"
             },
-            data: JSON.stringify(staffData), // Send data as JSON
+            data: JSON.stringify(staffData),
             success: function (response) {
-                // Handle success case
                 console.log("Staff update successful:", response);
                 alert("Staff updated successfully!");
-                $("#staffForm")[0].reset(); // Clear the form
-                populateStaffDropdown(); // Refresh dropdown options
+                $("#staffForm")[0].reset();
+                populateStaffDropdown();
             },
             error: function (xhr, status, error) {
-                // Handle error case
                 console.error("Error updating staff:", error);
-
-                // Check for unauthorized access errors
                 if (xhr.status === 403 || xhr.status === 401) {
                     alert("You are not authorized to update staff data. Please check your permissions.");
                 } else {
@@ -215,55 +188,49 @@ $(document).ready(function () {
             }
         });
     });
-    // Clear Form
+
     $("#staffFClear").click(function () {
         if (confirm("Are you sure you want to clear the form? Any unsaved changes will be lost.")) {
             $("#staffForm")[0].reset(); // Reset the form
             alert("Form cleared successfully!");
         }
     });
-    // Delete Staff
+
     $("#staffFDelete").click(function () {
-        // Retrieve the user role from JWT
         const userRole = getRoleFromJwt();
         console.log("User Role:", userRole);
 
-        // Check for role-based authorization (only proceed if role is 'ROLE_MANAGER')
         if (userRole && userRole !== 'ROLE_MANAGER') {
             alert("You do not have the necessary permissions to delete staff data. Required role: ROLE_MANAGER.");
             return;
         }
 
-        // Get the selected staff ID
         const staffId = $("#staffId").val();
         if (!staffId) {
             alert("Please select a staff ID to delete.");
             return;
         }
 
-        // Confirm deletion
         if (!confirm("Are you sure you want to delete this staff? This action cannot be undone.")) {
             return;
         }
 
-        // Make the AJAX request to delete the staff
         $.ajax({
-            url: "http://localhost:5050/cropMng/api/v1/staff/" + staffId, // API endpoint
-            method: "DELETE", // HTTP method for deletion
+            url: "http://localhost:5050/cropMng/api/v1/staff/" + staffId,
+            method: "DELETE",
             headers: {
-                "Authorization": "Bearer " + localStorage.getItem('jwtToken'), // Add JWT token for authorization
-                "Content-Type": "application/json" // Specify the content type as JSON
+                "Authorization": "Bearer " + localStorage.getItem('jwtToken'),
+                "Content-Type": "application/json"
             },
             success: function (response) {
                 console.log("Staff deleted successfully:", response);
                 alert("Staff deleted successfully!");
-                $("#staffForm")[0].reset(); // Clear the form
-                populateStaffDropdown(); // Refresh dropdown options
+                $("#staffForm")[0].reset();
+                populateStaffDropdown();
             },
             error: function (xhr, status, error) {
                 console.error("Error deleting staff:", error);
 
-                // Check for unauthorized access errors
                 if (xhr.status === 403 || xhr.status === 401) {
                     alert("You are not authorized to delete staff data. Please check your permissions.");
                 } else {
