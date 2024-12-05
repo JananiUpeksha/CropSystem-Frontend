@@ -176,7 +176,6 @@ h1 {
 }
 
 #content {
-    background-color: #4caf50; /* Green background color */
     flex: 1; /* Allow the div to grow and fill remaining space */
     border-radius: 10px; /* Optional: rounded corners */
     margin-top: 20px; /* Space above the green div */
@@ -189,25 +188,24 @@ h1 {
 
 #lineChart {
     margin-top: 20px;
-    background-color: white;
+    background-color: #cccccc;
     border-radius: 10px;
     padding: 20px;
 }
 .analytics-card {
     margin-top: 20px;
-    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     height: 400px; /* Increased height for the card */
     display: flex;
     flex-direction: column;
+    background-color: #cccccc;
 }
 
 .cardA-header {
-    margin-top: 10px;
-    background-color: #f8f9fa;
-    padding: 40px 20px; /* Increased padding for larger header */
+    background-color: #4caf50;
+    padding: 20px 20px; /* Increased padding for larger header */
     font-size: 24px; /* Increased font size for more emphasis */
     font-weight: bold;
     text-align: center;
@@ -217,6 +215,7 @@ h1 {
 .card-body {
     flex-grow: 1; /* Allows the body to expand and fill the space */
     padding: 20px;
+    background-color: #cccccc;
 }
 
 
@@ -252,8 +251,7 @@ h1 {
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding-top: 30px; /* Add top padding */
+    padding-top: 50px; /* Add top padding */
     margin-top: 50px;
     padding-left: 20px; /* Adjust left padding as needed */
     margin-left: 20px;

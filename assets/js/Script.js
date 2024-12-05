@@ -95,5 +95,9 @@
          $('#role').val(''); // Optionally reset to the placeholder
 
      });
+     $('#logout1').on('click', function () {
+         showSection('#loginMain'); // Show the login section when any logout button is clicked
+     });
+
 
  });
