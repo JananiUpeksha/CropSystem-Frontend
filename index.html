@@ -880,22 +880,22 @@
                                     <div class="row mb-3">
                                         <!-- Column 1: Log ID and Search Button -->
                                         <div class="col-md-3">
-                                            <label for="logId" class="form-label">Log ID</label>
                                             <div class="input-group">
-                                                <input type="text" id="logId" class="form-control" placeholder="Enter Log ID">
+                                                <select id="logId" class="form-select">
+                                                    <option value="" selected disabled>Select Log ID</option>
+                                                    <!-- Dynamic options here -->
+                                                </select>
                                                 <button type="button" class="btn btn-primary" id="searchLogIdBtn">Search</button>
                                             </div>
                                         </div>
 
                                         <!-- Column 2: Log Details -->
                                         <div class="col-md-4">
-                                            <label for="logDetails" class="form-label">Log Details</label>
                                             <textarea id="logDetails" class="form-control" placeholder="Enter Log Details" rows="3"></textarea>
                                         </div>
 
                                         <!-- Column 3: Log Date -->
                                         <div class="col-md-4">
-                                            <label for="logDate" class="form-label">Log Date</label>
                                             <input type="date" id="logDate" class="form-control">
                                         </div>
                                     </div>
@@ -915,44 +915,67 @@
                                         <!-- Column 2: Staff Dropdowns -->
                                         <div class="col-md-4" style="padding-left: 28px;">
                                             <label for="staffLog1" class="form-label">Assign Staff</label>
-                                            <select id="staffLog1" class="form-select mb-3">
+                                            <select id="staffLog1" class="form-select"
+                                                    style="margin-bottom: 16px; width: calc(100% - 2px); display: block;">
                                                 <option value="" selected disabled>Select your staff</option>
                                                 <!-- Dynamic options here -->
                                             </select>
-                                            <select id="staffLog2" class="form-select">
+                                            <select id="staffLog2" class="form-select"
+                                                    style="margin-bottom: 16px; width: calc(100% - 2px); display: block;">
                                                 <option value="" selected disabled>Select your staff</option>
                                                 <!-- Dynamic options here -->
                                             </select>
+                                            <div style="margin-top: 10px;">
+                                                <input id="logStaff" class="form-control" placeholder="Assigned Staff" rows="3"
+                                                       style="width: calc(100% - 2px); padding-top: 10px; margin-bottom: 16px; display: block;">
+                                            </div>
                                         </div>
+
+
                                     </div>
 
                                     <!-- Row 3 -->
                                     <div class="row mb-3">
                                         <!-- Column 1: Crop Dropdown -->
                                         <div class="col-md-4">
-                                            <label for="cropLog1" class="form-label">Assign Field</label>
-                                            <select id="cropLog1" class="form-select mb-3">
-                                                <option value="" selected disabled>Select a field</option>
+                                            <label for="cropLog1" class="form-label">Assign Crops</label>
+                                            <select id="cropLog1" class="form-select"
+                                                    style="margin-bottom: 16px; width: calc(100% - 2px); display: block;">
+                                                <option value="" selected disabled>Select a crop</option>
                                                 <!-- Dynamic options here -->
                                             </select>
-                                            <select id="cropLog2" class="form-select">
-                                                <option value="" selected disabled>Select a field</option>
+                                            <select id="cropLog2" class="form-select"
+                                                    style="margin-bottom: 16px; width: calc(100% - 2px); display: block;">
+                                                <option value="" selected disabled>Select a crop</option>
                                                 <!-- Dynamic options here -->
                                             </select>
+                                            <div style="margin-top: 10px;">
+                                                <input id="logCrops" class="form-control" placeholder="Assigned Crops" rows="3"
+                                                       style="width: calc(100% - 2px); padding-top: 10px; margin-bottom: 16px; display: block;">
+                                            </div>
                                         </div>
+
 
                                         <!-- Column 2: Field Dropdowns -->
                                         <div class="col-md-4" style="margin-left: 285px;">
                                             <label for="fieldLog1" class="form-label">Assign Field</label>
-                                            <select id="fieldLog1" class="form-select mb-3">
+                                            <select id="fieldLog1" class="form-select"
+                                                    style="margin-bottom: 16px; width: calc(100% - 2px); display: block;">
                                                 <option value="" selected disabled>Select a field</option>
                                                 <!-- Dynamic options here -->
                                             </select>
-                                            <select id="fieldLog2" class="form-select">
+                                            <select id="fieldLog2" class="form-select"
+                                                    style="margin-bottom: 16px; width: calc(100% - 2px); display: block;">
                                                 <option value="" selected disabled>Select a field</option>
                                                 <!-- Dynamic options here -->
                                             </select>
+                                            <div style="margin-top: 10px;">
+                                                <input id="logField" class="form-control" placeholder="Assigned Fields" rows="3"
+                                                       style="width: calc(100% - 2px); padding-top: 10px; margin-bottom: 16px; display: block;">
+                                            </div>
                                         </div>
+
+
                                     </div>
 
                                     <!-- Buttons -->
@@ -1081,6 +1104,7 @@
 <script type="module" src="assets/js/f1.js"></script>
 <script type="module" src="assets/js/f2.js"></script>
 <script type="module" src="assets/js/f3.js"></script>
+<script type="module" src="assets/js/Logs.js"></script>
 
 
 

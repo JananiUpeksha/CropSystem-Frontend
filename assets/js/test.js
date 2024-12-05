@@ -1,93 +1,89 @@
-/*
-function getJwtToken() {
-    const token = localStorage.getItem('jwtToken');
-    console.log("Retrieved JWT Token:", token); // Log to ensure the token is correctly retrieved
-    return token;
-}
+$(document).ready(function () {
+    const logIdDropdown = $("#logId");
+    const logDetailsInput = $("#logDetails");
+    const logDateInput = $("#logDate");
+    const logStaffInput = $("#logStaff");
+    const logFieldInput = $("#logField");
+    const logCropsInput = $("#logCrops");
+    const searchLogIdBtn = $("#searchLogIdBtn");
 
-$("#fieldSave").click(async function () {
-    try {
-        const formDatas = new FormData();
+    // Retrieve JWT token (Assuming it's stored in localStorage)
+    const jwtToken = localStorage.getItem("jwtToken");
 
-        // Add text fields
-        formDatas.append("name", "Field fe");
-        formDatas.append("location", "40.7128,-74.0060");
-        formDatas.append("size", "100.0");
-        formDatas.append("staffIds", "STAFF001,STAFF002");
-
-        // Retrieve image files from the input elements
-        const image1File = document.getElementById("image1").files[0]; // Ensure these IDs match your HTML
-        const image2File = document.getElementById("image2").files[0];
-
-        // Convert images to Base64
-        const image1Base64 = image1File ? await toBase64(image1File) : null;
-        const image2Base64 = image2File ? await toBase64(image2File) : null;
-
-        if (image1Base64) formDatas.append("image1", image1Base64);
-        if (image2Base64) formDatas.append("image2", image2Base64);
-
-        // Send the formData via axios
-        axios.post("http://localhost:5050/cropMng/api/v1/field", formDatas, {
-            headers: {
-                Authorization: "Bearer " + getJwtToken(), // Ensure this function returns the token
-            },
-        })
-            .then((response) => {
-                console.log("Field saved successfully:", response.data);
-                alert("Field saved successfully!");
-                document.getElementById("fieldForm").reset(); // Ensure "fieldForm" matches your form ID
-            })
-            .catch((error) => {
-                console.error("Error saving field:", error);
-                alert("Failed to save field data. Please try again.");
+    // Populate Log ID dropdown
+    $.ajax({
+        url: "http://localhost:5050/cropMng/api/v1/logs",
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + jwtToken // Adding the JWT token to the request header
+        },
+        success: function (logs) {
+            logs.forEach(function (log) {
+                const option = $("<option>")
+                    .val(log.logId)  // Use logId from the response
+                    .text(log.logId); // Display logId in the dropdown
+                logIdDropdown.append(option);
             });
-
-    } catch (e) {
-        console.error("Error in saving field:", e);
-        alert("An unexpected error occurred. Please try again.");
-    }
-});
-
-// Helper function to convert file to Base64
-function toBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result.split(',')[1]); // Remove the "data:image/!*;base64," prefix
-        reader.onerror = error => reject(error);
-        reader.readAsDataURL(file);
+        },
+        error: function (xhr, status, error) {
+            console.error("Error fetching log IDs:", error);
+            alert("Failed to load log IDs. Please try again.");
+        }
     });
-}
-*/
-$.ajax({
-    url: "http://localhost:5050/cropMng/api/v1/fields", // API endpoint for fields
-    method: "GET",
-    headers: {
-        Authorization: "Bearer " + getJwtToken() // Ensure JWT is added via the header
-    },
-    success: function (data) {
-        console.log("Fetched fields data:", data);
 
-        const fieldIdDropdown = $("#fieldId");
-        fieldIdDropdown.empty(); // Clear existing options
+    // Handle Search Button click
+    /* searchLogIdBtn.click(function () {
+         const selectedLogId = logIdDropdown.val();
+         if (!selectedLogId) {
+             alert("Please select a Log ID.");
+             return;
+         }
 
-        // Add a default option
-        fieldIdDropdown.append($("<option>").val("").text("Select Field"));
+         $.ajax({
+             url: `http://localhost:5050/cropMng/api/v1/logs/${selectedLogId}`,
+             method: "GET",
+             headers: {
+                 "Authorization": "Bearer " + jwtToken // Adding the JWT token for authentication
+             },
+             success: function (log) {
+                 // Populate fields with associated data
+                 logDetailsInput.val(log.logDetails || "");
+                 logDateInput.val(log.date ? log.date : "");
 
-        // Populate dropdown with field options
-        data.forEach(field => {
-            const option = $("<option>").val(field.fieldId).text(field.fieldId); // Use fieldId as both value and text
-            fieldIdDropdown.append(option);
-        });
-    },
-    error: function (xhr, status, error) {
-        console.error("Error fetching fields data:", error);
-        alert("Failed to load fields data.");
-    }
+                 // Populate the staff, field, and crop fields with comma-separated IDs
+                 logStaffInput.val(log.staffIds ? Array.from(log.staffIds).join(", ") : "");
+                 logFieldInput.val(log.fieldIds ? Array.from(log.fieldIds).join(", ") : "");
+                 logCropsInput.val(log.cropIds ? Array.from(log.cropIds).join(", ") : "");
+
+                 // Check if image2 exists in the log data and set it as the preview image
+                 if (log.image2) {
+                     $("#imagePreviewlog").attr("src", "data:image/png;base64," + log.image2);
+                 } else {
+                     // Reset to default image if no image is found
+                     $("#imagePreviewlog").attr("src", "assets/img/c1.jpg");
+                 }
+
+                 // Handle file input change (for image upload)
+                 $('#image3').on('change', function(event) {
+                     const file = event.target.files[0];
+
+                     if (file) {
+                         const reader = new FileReader();
+
+                         reader.onload = function(e) {
+                             // Set the preview image to the selected file
+                             $("#imagePreviewlog").attr("src", e.target.result);
+                         };
+
+                         reader.readAsDataURL(file); // Convert the file to Base64
+                     }
+                 });
+
+             },
+             error: function (xhr, status, error) {
+                 console.error("Error fetching log details:", error);
+                 alert("Failed to fetch log details. Please try again.");
+             }
+         });
+     });*/
 });
-
-// Helper function to get JWT token from localStorage
-function getJwtToken() {
-    const token = localStorage.getItem('jwtToken');
-    console.log("Retrieved JWT Token:", token);
-    return token;
-}
