@@ -958,17 +958,9 @@
 
                                         <!-- Column 2: Field Dropdowns -->
                                         <div class="col-md-4" style="margin-left: 285px;">
-                                            <label for="fieldLog1" class="form-label">Assign Field</label>
-                                            <select id="fieldLog1" class="form-select"
-                                                    style="margin-bottom: 16px; width: calc(100% - 2px); display: block;">
-                                                <option value="" selected disabled>Select a field</option>
-                                                <!-- Dynamic options here -->
-                                            </select>
-                                            <select id="fieldLog2" class="form-select"
-                                                    style="margin-bottom: 16px; width: calc(100% - 2px); display: block;">
-                                                <option value="" selected disabled>Select a field</option>
-                                                <!-- Dynamic options here -->
-                                            </select>
+                                            <label for="openFieldModal" class="form-label">Assign Field</label>
+                                            <button id="openFieldModal" class="btn btn-primary" style="margin-bottom: 16px; width: 100%;">Select Field</button>
+
                                             <div style="margin-top: 10px;">
                                                 <input id="logField" class="form-control" placeholder="Assigned Fields" rows="3"
                                                        style="width: calc(100% - 2px); padding-top: 10px; margin-bottom: 16px; display: block;">
@@ -984,6 +976,7 @@
                                             <button type="button" class="btn btn-success" id="saveLogBtn">Save</button>
                                             <button type="button" class="btn btn-warning" id="updateLogBtn">Update</button>
                                             <button type="button" class="btn btn-danger" id="deleteLogBtn">Delete</button>
+                                            <button type="button" class="btn btn-danger" id="clearLogBtn">Clear</button>
                                         </div>
                                     </div>
                                 </form>
@@ -1000,6 +993,34 @@
         </div>
     </section>
 </section>
+<!-- Modal -->
+<div id="fieldModal" class="modal fade" tabindex="-1" aria-labelledby="fieldModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fieldModalLabel">Select a Field</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Field ID</th>
+                        <th>Field Name</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="fieldTableBody">
+                    <!-- Dynamic rows will be appended here -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -1105,6 +1126,7 @@
 <script type="module" src="assets/js/f2.js"></script>
 <script type="module" src="assets/js/f3.js"></script>
 <script type="module" src="assets/js/Logs.js"></script>
+<script type="module" src="assets/js/Modal.js"></script>
 
 
 

@@ -261,7 +261,151 @@ $(document).ready(function () {
             }
         });
 
-});
+    });
+    $("#updateLogBtn").on("click", function () {
+        console.log("[DEBUG] Update log button clicked...");
+
+        // Step 1: Collect and log input values
+        const logId = $("#logId").val();  // Assuming there's a hidden input for the log ID
+        const logDetails = $("#logDetails").val();
+        const logDate = $("#logDate").val();
+        const fieldIds = $("#logField").val().split(",");  // Assuming the input fields are comma-separated
+
+        // Collect staff IDs from the dropdowns
+        const staff1 = $('#staffLog1').val();
+        const staff2 = $('#staffLog2').val();
+
+        // Collect crop IDs from the dropdowns
+        const crop1 = $('#cropLog1').val();
+        const crop2 = $('#cropLog2').val();
+
+        console.log("[DEBUG] Captured input values:", {
+            logId,
+            logDetails,
+            logDate,
+            fieldIds,
+            staff1,
+            staff2,
+            crop1,
+            crop2
+        });
+
+        // Step 2: Format staff and crop IDs (omit empty values)
+        const staffIds = [staff1, staff2].filter(id => id);
+        const cropIds = [crop1, crop2].filter(id => id);
+
+        console.log("[DEBUG] Collected staff IDs:", staffIds);
+        console.log("[DEBUG] Collected crop IDs:", cropIds);
+
+
+        // Step 4: Create FormData and log it
+        const formData = new FormData();
+        formData.append("logId", logId);  // Include the log ID for updating
+        formData.append("logDetails", logDetails);
+        formData.append("date", logDate);
+
+        // Attach fieldIds, staffIds, and cropIds
+        fieldIds.forEach(fieldId => formData.append("fieldIds", fieldId));
+        staffIds.forEach(staffId => formData.append("staffIds", staffId));
+        cropIds.forEach(cropId => formData.append("cropIds", cropId));
+
+        // Step 5: Handle image3 as image2
+        const image3 = $("#image3")[0].files[0];  // Get the selected file for image3
+        if (image3) {
+            formData.append("image2", image3);  // Append the file to the form data as image2
+            console.log("[DEBUG] Added image2 to form data.");
+        }
+
+        // Step 6: Send data via AJAX
+        $.ajax({
+            url: `http://localhost:5050/cropMng/api/v1/logs/${logId}`,  // Replace with your API URL
+            type: "PUT",  // Use PUT for updates
+            headers: {
+                "Authorization": "Bearer " + jwtToken
+            },
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                console.log("[DEBUG] Log updated successfully:", response);
+                alert("Log updated successfully!");
+            },
+            error: function(xhr, status, error) {
+                console.error("[DEBUG] Error updating log:", {
+                    status,
+                    error,
+                    response: xhr.responseText
+                });
+                alert("Failed to update log. Backend Response: " + xhr.responseText);
+            }
+        });
+    });
+
+    $("#deleteLogBtn").on("click", function () {
+        console.log("[DEBUG] Delete log button clicked...");
+
+        const logId = $("#logId").val(); // Assuming the logId is stored in a hidden input field
+
+        // Validate logId
+        if (!logId) {
+            alert("No log selected to delete.");
+            return;
+        }
+
+        // Confirm deletion
+        if (!confirm("Are you sure you want to delete this log? This action cannot be undone.")) {
+            return;
+        }
+
+        // Send DELETE request
+        $.ajax({
+            url: `http://localhost:5050/cropMng/api/v1/logs/${logId}`,  // Replace with your API URL
+            type: "DELETE",
+            headers: {
+                "Authorization": "Bearer " + jwtToken
+            },
+            success: function(response) {
+                console.log("[DEBUG] Log deleted successfully:", response);
+                alert("Log deleted successfully!");
+
+                // Clear the form fields after deletion
+                $("#logId").val("");
+                $("#logDetails").val("");
+                $("#logDate").val("");
+                $("#logField").val("");
+                $("#staffLog1").val("");
+                $("#staffLog2").val("");
+                $("#cropLog1").val("");
+                $("#cropLog2").val("");
+                $("#imagePreviewlog").attr("src", "assets/img/c9.jpg"); // Reset to default image
+            },
+            error: function(xhr, status, error) {
+                console.error("[DEBUG] Error deleting log:", {
+                    status,
+                    error,
+                    response: xhr.responseText
+                });
+                alert("Failed to delete log. Backend Response: " + xhr.responseText);
+            }
+        });
+    });
+    $("#clearLogBtn").on("click", function () {
+        console.log("[DEBUG] Clear log button clicked...");
+
+        // Reset all form fields
+        $("#logId").val("");
+        $("#logDetails").val("");
+        $("#logDate").val("");
+        $("#logField").val("");
+        $("#staffLog1").val("");
+        $("#staffLog2").val("");
+        $("#cropLog1").val("");
+        $("#cropLog2").val("");
+        $("#image3").val(""); // Clear the file input for image3
+        $("#imagePreviewlog").attr("src", "assets/img/c9.jpg"); // Reset to default image
+
+        alert("Form cleared successfully!");
+    });
 
 
 });
